@@ -1,64 +1,52 @@
 // app/layout.tsx
-
-import './globals.css';
-import { Inter } from "next/font/google";
+import "./globals.css";
 import Link from "next/link";
-import { ThemeProvider } from "next-themes";
-import ThemeSwitcher from '../components/ThemeSwitcher';
-
-const inter = Inter({ subsets: ["latin"] });
+import ThemeSwitcher from "../components/ThemeSwitcher";
 
 export const metadata = {
-  title: "Manos Tzavidas",
-  description: "Photographic work by Manos Tzavidas",
+  title: "Manos Tzavidas – Photography",
+  description: "Photography portfolio by Manos Tzavidas",
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.className} bg-white text-black dark:bg-black dark:text-white`}>
-        <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
-          <header className="sticky top-0 z-50 w-full border-b bg-white/70 dark:bg-black/70 backdrop-blur">
-            <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4">
-              {/* Left: Site title */}
-              <Link href="/">
-                <span className="text-lg font-bold tracking-tight">MANOS TZAVIDAS.</span>
-              </Link>
+    <html lang="en">
+      <body className="bg-white text-black dark:bg-black dark:text-white transition-colors duration-300">
+        {/* Sticky Top Navbar */}
+        <header className="sticky top-0 z-50 bg-white dark:bg-black border-b border-gray-300 dark:border-gray-700">
+          <div className="flex items-center justify-between px-6 py-4">
+            {/* Left: Logo */}
+            <Link href="/" className="text-xl font-bold tracking-wide">
+              MANOS TZAVIDAS.
+            </Link>
 
-              {/* Center: Navigation */}
-              <nav className="space-x-6 text-sm font-semibold">
-                <Link href="/" className="hover:underline">
-                  Home
-                </Link>
-                <Link href="#" className="hover:underline">
-                  Chapters
-                </Link>
-                <Link href="#" className="hover:underline">
-                  Journal
-                </Link>
-                <Link href="#" className="hover:underline">
-                  About
-                </Link>
-              </nav>
+            {/* Middle: Nav Links */}
+            <nav className="space-x-6 text-sm font-semibold">
+              <Link href="/" className="hover:underline">Home</Link>
+              <Link href="/chapters" className="hover:underline">Chapters</Link>
+              <Link href="/journal" className="hover:underline">Journal</Link>
+              <Link href="/about" className="hover:underline">About</Link>
+            </nav>
 
-              {/* Right: Empty for now */}
-              <div className="w-8" />
+            {/* Right: Theme toggle */}
+            <div className="flex items-center">
+              <ThemeSwitcher />
             </div>
-            <div className="text-center py-2 text-sm font-medium tracking-wide uppercase">
+          </div>
+
+          {/* Grey Divider */}
+          <div className="border-t border-gray-200 dark:border-gray-700"></div>
+
+          {/* Recent Work label */}
+          <div className="py-4 text-center">
+            <h2 className="text-base font-medium uppercase tracking-widest text-gray-600 dark:text-gray-400">
               Recent Work
-            </div>
-          </header>
+            </h2>
+          </div>
+        </header>
 
-          {/* Floating theme switcher */}
-          <ThemeSwitcher />
-
-          {/* Page content */}
-          <main className="mx-auto max-w-7xl px-4 py-10">{children}</main>
-        </ThemeProvider>
+        {/* Page Content */}
+        <main className="max-w-7xl mx-auto px-4">{children}</main>
       </body>
     </html>
   );
