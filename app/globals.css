@@ -6,6 +6,9 @@
 
 body {
   font-family: 'Satoshi', sans-serif;
-  background-color: white;
-  color: black;
+  @apply bg-white text-black;
+}
+
+.dark body {
+  @apply bg-black text-white;
 }

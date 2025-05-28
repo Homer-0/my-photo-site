@@ -1,51 +1,52 @@
-// app/layout.tsx
-"use client";
+import './globals.css';
+import Link from 'next/link';
+import { Inter } from 'next/font/google';
+import ThemeSwitcher from '../components/ThemeSwitcher';
+import { Providers } from './providers';
 
-import "./globals.css";
-import Link from "next/link";
-import ThemeSwitcher from "../components/ThemeSwitcher";
+const inter = Inter({ subsets: ['latin'] });
 
 export const metadata = {
-  title: "Manos Tzavidas – Photography",
-  description: "Photography portfolio by Manos Tzavidas",
+  title: 'Manos Tzavidas – Photography',
+  description: 'Photography portfolio by Manos Tzavidas',
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="en">
-      <body className="bg-white text-black dark:bg-black dark:text-white transition-colors duration-300">
-        {/* Sticky Top Navbar */}
-        <header className="sticky top-0 z-50 bg-white dark:bg-black border-b border-gray-300 dark:border-gray-700">
-          <div className="flex items-center justify-between px-6 py-4">
-            {/* Left: Logo */}
-            <Link href="/" className="text-xl font-bold tracking-wide">
-              MANOS TZAVIDAS.
-            </Link>
+      <body className={inter.className}>
+        <Providers>
+          <header className="sticky top-0 z-50 bg-white/90 dark:bg-black/90 backdrop-blur border-b border-gray-200 dark:border-gray-800">
+            <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
+              {/* Left: Theme Switcher */}
+              <div>
+                <ThemeSwitcher />
+              </div>
 
-            {/* Middle: Nav Links */}
-            <nav className="space-x-6 text-sm font-semibold">
-              <Link href="/" className="hover:underline">Home</Link>
-              <Link href="/chapters" className="hover:underline">Chapters</Link>
-              <Link href="/journal" className="hover:underline">Journal</Link>
-              <Link href="/about" className="hover:underline">About</Link>
-            </nav>
+              {/* Center: Navigation */}
+              <div className="flex space-x-6 text-sm sm:text-base font-medium tracking-wide">
+                <Link href="/">Home</Link>
+                <Link href="#">Chapters</Link>
+                <Link href="#">Journal</Link>
+                <Link href="#">About</Link>
+              </div>
 
-            {/* Right: Theme toggle */}
-            <div className="flex items-center">
-              <ThemeSwitcher />
+              {/* Right: Empty for now */}
+              <div className="w-6" />
             </div>
+          </header>
+
+          {/* "Recent Work" heading */}
+          <div className="text-center text-lg font-semibold mt-8 mb-4">
+            Recent work
           </div>
-        </header>
 
-        {/* Recent Work title, separate from navbar */}
-        <div className="py-6 text-center">
-          <h2 className="text-base font-medium uppercase tracking-widest text-gray-600 dark:text-gray-400">
-            Through the Lens
-          </h2>
-        </div>
-
-        {/* Page Content */}
-        <main className="max-w-7xl mx-auto px-4">{children}</main>
+          {children}
+        </Providers>
       </body>
     </html>
   );
