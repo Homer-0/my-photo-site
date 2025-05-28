@@ -6,9 +6,12 @@ import Masonry from "react-masonry-css";
 import dynamic from "next/dynamic";
 import "yet-another-react-lightbox/styles.css";
 
-// SSR-safe dynamic imports
-const Lightbox = dynamic(() => import("yet-another-react-lightbox"), { ssr: false });
-const Zoom = dynamic(() => import("yet-another-react-lightbox/plugins/zoom"), { ssr: false });
+const Lightbox = dynamic(() => import("yet-another-react-lightbox"), {
+  ssr: false,
+});
+const Zoom = dynamic(() => import("yet-another-react-lightbox/plugins/zoom"), {
+  ssr: false,
+});
 
 const images = [
   { src: "/images/Andelsbolig.jpg", alt: "Andelsbolig" },
@@ -31,7 +34,7 @@ export default function Home() {
   };
 
   return (
-    <div className="text-black px-4 md:px-10 py-6">
+    <div className="text-black">
       <Masonry
         breakpointCols={breakpointColumnsObj}
         className="flex gap-6"
@@ -49,7 +52,6 @@ export default function Home() {
               width={1200}
               height={800}
               className="rounded-xl shadow-md object-cover w-full h-auto"
-              loading="lazy"
             />
           </div>
         ))}
@@ -59,29 +61,10 @@ export default function Home() {
         open={index >= 0}
         close={() => setIndex(-1)}
         index={index}
-        slides={images.map(({ src, alt }) => ({
-          src,
-          alt,
-        }))}
+        slides={images.map(({ src, alt }) => ({ src, description: alt }))}
         plugins={[Zoom]}
         styles={{
           container: { backgroundColor: "rgba(255,255,255,0.95)" },
-        }}
-        render={{
-          description: ({ slide }) =>
-            slide.alt && (
-              <div
-                style={{
-                  color: "#111",
-                  fontSize: "1rem",
-                  fontStyle: "italic",
-                  textAlign: "center",
-                  marginTop: "1rem",
-                }}
-              >
-                {slide.alt}
-              </div>
-            ),
         }}
         zoom={{ maxZoomPixelRatio: 2 }}
       />
