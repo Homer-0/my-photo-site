@@ -16,7 +16,7 @@ const images = [
   { src: "/images/Kitchen.jpg", alt: "Kitchen" },
   { src: "/images/Mirror.jpg", alt: "Mirror" },
   { src: "/images/Red.jpg", alt: "Red" },
-  { src: "/images/Sunrise.jpg", alt: "Sunrise" },
+  { src: "/images/Sunrise.jpg", alt: "Sunrise" }
 ];
 
 export default function Home() {
@@ -37,7 +37,7 @@ export default function Home() {
               fill
               className="object-cover rounded"
               sizes="(max-width: 768px) 50vw, (max-width: 1200px) 25vw, 20vw"
-              priority={i === 0} // prioritize the first image
+              priority={i === 0}
             />
           </button>
         ))}
