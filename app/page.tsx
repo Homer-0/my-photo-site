@@ -3,15 +3,12 @@
 import { useState } from "react";
 import Image from "next/image";
 import Masonry from "react-masonry-css";
-import Lightbox from "yet-another-react-lightbox";
-import Zoom from "yet-another-react-lightbox/plugins/zoom";
-import "yet-another-react-lightbox/styles.css";
 
 const images = [
   { src: "/images/Andelsbolig.jpg", alt: "Andelsbolig" },
   { src: "/images/track-field.jpg", alt: "Track & Field" },
   { src: "/images/Home.jpg", alt: "Mølle Allé" },
-  { src: "/images/Lake.jpg", alt: "Lake" },
+  { src: "/images/lake.jpg", alt: "Lake" },
   { src: "/images/metro.jpg", alt: "Metro" },
   { src: "/images/monstera.jpg", alt: "Monstera" },
   { src: "/images/monstera2.jpg", alt: "Monstera 2" },
@@ -37,34 +34,19 @@ export default function Home() {
         {images.map((img, i) => (
           <div
             key={i}
-            onClick={() => setIndex(i)}
             className="cursor-zoom-in transition-transform hover:scale-[1.02]"
           >
             <Image
               src={img.src}
               alt={img.alt}
-              width={1200}
-              height={800}
+              width={600}
+              height={400}
+              loading="lazy"
               className="rounded-xl shadow-md object-cover w-full h-auto"
             />
           </div>
         ))}
       </Masonry>
-
-      <Lightbox
-        open={index >= 0}
-        close={() => setIndex(-1)}
-        index={index}
-        slides={images.map(({ src, alt }) => ({
-          src,
-          description: alt,
-        }))}
-        plugins={[Zoom]}
-        styles={{
-          container: { backgroundColor: "rgba(255,255,255,0.95)" },
-        }}
-        zoom={{ maxZoomPixelRatio: 2 }}
-      />
     </div>
   );
 }
