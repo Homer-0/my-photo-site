@@ -3,7 +3,6 @@
 import { useTheme } from 'next-themes';
 import { useEffect, useState } from 'react';
 import { Sun, Moon } from 'lucide-react';
-import clsx from 'clsx';
 
 export default function ThemeSwitcher() {
   const { theme, setTheme } = useTheme();
@@ -16,35 +15,23 @@ export default function ThemeSwitcher() {
   if (!mounted) return null;
 
   return (
-    <div className="fixed left-4 top-1/2 -translate-y-1/2 z-50 flex flex-col items-center gap-4">
+    <div className="fixed left-4 top-1/2 -translate-y-1/2 z-50 flex flex-col items-center space-y-2">
       <button
-        onClick={() => setTheme('light')}
-        className={clsx(
-          'w-14 h-32 flex flex-col items-center justify-center rounded-full shadow-md transition-all duration-300 px-1 py-2',
-          theme === 'light'
-            ? 'bg-white text-black'
-            : 'bg-gray-100 text-gray-600'
-        )}
+        onClick={() => setTheme('dark')}
+        className={`w-14 h-24 flex flex-col justify-end items-center bg-gray-100 dark:bg-gray-800 rounded-full shadow-md transition-all`}
+        aria-label="Activate Dark Mode"
       >
-        <Sun size={20} className="mb-1" />
-        <span className="text-xs font-semibold transform -rotate-90 origin-center tracking-wider">
-          LIGHT
-        </span>
+        <Moon size={20} className="mb-1" />
+        <span className="text-[10px] font-bold rotate-[-90deg] origin-bottom whitespace-nowrap">DARK</span>
       </button>
 
       <button
-        onClick={() => setTheme('dark')}
-        className={clsx(
-          'w-14 h-32 flex flex-col items-center justify-center rounded-full shadow-md transition-all duration-300 px-1 py-2',
-          theme === 'dark'
-            ? 'bg-white text-black'
-            : 'bg-gray-100 text-gray-600'
-        )}
+        onClick={() => setTheme('light')}
+        className={`w-14 h-24 flex flex-col justify-end items-center bg-white dark:bg-gray-700 rounded-full shadow-md transition-all`}
+        aria-label="Activate Light Mode"
       >
-        <Moon size={20} className="mb-1" />
-        <span className="text-xs font-semibold transform -rotate-90 origin-center tracking-wider">
-          DARK
-        </span>
+        <Sun size={20} className="mb-1" />
+        <span className="text-[10px] font-bold rotate-[-90deg] origin-bottom whitespace-nowrap">LIGHT</span>
       </button>
     </div>
   );
