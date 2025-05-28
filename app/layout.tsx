@@ -1,13 +1,10 @@
-// app/layout.tsx
 import "./globals.css";
-import { Inter } from "next/font/google";
 import Link from "next/link";
+import type { Metadata } from "next";
 
-const inter = Inter({ subsets: ["latin"] });
-
-export const metadata = {
-  title: "Manos Tzavidas",
-  description: "Photography by Manos Tzavidas",
+export const metadata: Metadata = {
+  title: "Manos Tzavidas Photography",
+  description: "Visual storytelling through photography",
 };
 
 export default function RootLayout({
@@ -17,28 +14,36 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <div className="flex min-h-screen">
-          {/* Sidebar */}
-          <aside className="w-64 bg-white border-r px-6 py-8 hidden md:block">
-            <h1 className="text-xl font-semibold mb-8 tracking-tight">
-              <Link href="/">MANOS TZAVIDAS.</Link>
-            </h1>
-            <nav className="flex flex-col space-y-4 text-sm font-medium">
-              <Link href="/" className="hover:underline">Home</Link>
-              <Link href="#" className="hover:underline">People</Link>
-              <Link href="#" className="hover:underline">Still</Link>
-              <Link href="#" className="hover:underline">Rural</Link>
-              <Link href="#" className="hover:underline">Documentary</Link>
-              <Link href="https://www.instagram.com/manostzavidas" className="hover:underline" target="_blank" rel="noopener noreferrer">
-                Instagram
+      <body className="bg-white text-black">
+        <header className="border-b border-neutral-300 px-6 py-4">
+          <div className="flex justify-between items-center max-w-6xl mx-auto">
+            {/* Left: Site name */}
+            <Link href="/" className="text-lg font-semibold tracking-wide">
+              MANOS TZAVIDAS.
+            </Link>
+
+            {/* Center: Navigation */}
+            <nav className="absolute left-1/2 transform -translate-x-1/2 space-x-6 text-sm font-medium">
+              <Link href="/" className="hover:underline">
+                Home
+              </Link>
+              <Link href="/chapters" className="hover:underline">
+                Chapters
+              </Link>
+              <Link href="/journal" className="hover:underline">
+                Journal
+              </Link>
+              <Link href="/about" className="hover:underline">
+                About
               </Link>
             </nav>
-          </aside>
 
-          {/* Main content */}
-          <main className="flex-1">{children}</main>
-        </div>
+            {/* Right: Empty (Instagram icon removed) */}
+            <div className="w-6" />
+          </div>
+        </header>
+
+        <main className="max-w-6xl mx-auto">{children}</main>
       </body>
     </html>
   );
