@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import "./globals.css";
 import Link from "next/link";
+import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Manos Tzavidas",
@@ -14,51 +14,59 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        {/* ✅ Ensures mobile scaling works correctly */}
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link
+          href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap"
+          rel="stylesheet"
+        />
+      </head>
       <body className="bg-white text-black font-sans flex min-h-screen">
-        <aside className="w-64 px-6 py-10 border-r border-gray-200 flex flex-col justify-between">
-          <div>
-            <Link href="/" className="block text-xl font-bold mb-6 uppercase tracking-wide">
-          MANOS TZAVIDAS.
-            </Link>
+        <aside className="w-64 px-6 py-10 border-r border-gray-200 flex-shrink-0">
+          <Link href="/" className="text-2xl font-bold block mb-8 leading-tight tracking-tight hover:opacity-80 transition">
+            MANOS TZAVIDAS.
+          </Link>
 
-            <nav className="mb-10 space-y-3 font-semibold text-sm uppercase">
-              <span className="block text-gray-400">People</span>
-              <Link href="/street" className="block">Street</Link>
-              <Link href="/still" className="block">Still</Link>
-              <Link href="/rural" className="block">Rural</Link>
-              <Link href="/documentary" className="block">Documentary</Link>
-              <Link href="/reflections" className="block">Reflections</Link>
-              <Link href="/prints" className="block">Prints</Link>
-            </nav>
+          <nav className="mb-10 space-y-2 font-semibold text-sm uppercase">
+            <span className="block text-gray-400">People</span>
+            <Link href="/street" className="block">Street</Link>
+            <Link href="/still" className="block">Still</Link>
+            <Link href="/rural" className="block">Rural</Link>
+            <Link href="/documentary" className="block">Documentary</Link>
+            <Link href="/philosophy" className="block">Reflections</Link> {/* Renamed */}
+          </nav>
 
-            <div className="space-y-2 text-sm leading-relaxed">
-              <Link href="/about" className="block">About Me</Link>
-              <Link href="/contact" className="block">Contact</Link>
-              <Link href="/media" className="block">Media</Link>
-            </div>
+          <div className="mb-10 space-y-2 text-sm">
+            <Link href="/about" className="block">About Me</Link>
+            <Link href="/prints" className="block">Prints</Link>
+            <Link href="/contact" className="block">Contact</Link>
+            <Link href="/media" className="block">Media</Link>
           </div>
 
-          <div className="mt-10">
+          <div className="flex space-x-4 mt-8">
             <a
               href="https://www.instagram.com/mantzavi/"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block"
               aria-label="Instagram"
+              className="hover:opacity-80 transition"
             >
+              {/* Custom Instagram icon SVG */}
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="w-5 h-5 text-black hover:text-gray-500"
+                width="20"
+                height="20"
                 fill="currentColor"
                 viewBox="0 0 24 24"
               >
-                <path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2zm0 1.5A4.25 4.25 0 0 0 3.5 7.75v8.5A4.25 4.25 0 0 0 7.75 20.5h8.5A4.25 4.25 0 0 0 20.5 16.25v-8.5A4.25 4.25 0 0 0 16.25 3.5h-8.5zm8.75 2a1 1 0 1 1 0 2 1 1 0 0 1 0-2zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 1.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7z" />
+                <path d="M7 2C4.243 2 2 4.243 2 7v10c0 2.757 2.243 5 5 5h10c2.757 0 5-2.243 5-5V7c0-2.757-2.243-5-5-5H7zm0 2h10c1.654 0 3 1.346 3 3v10c0 1.654-1.346 3-3 3H7c-1.654 0-3-1.346-3-3V7c0-1.654 1.346-3 3-3zm10 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zM12 7a5 5 0 1 0 .001 10.001A5 5 0 0 0 12 7zm0 2a3 3 0 1 1-.001 6.001A3 3 0 0 1 12 9z" />
               </svg>
             </a>
           </div>
         </aside>
 
-        <main className="flex-1 p-10">{children}</main>
+        <main className="flex-1 p-10 overflow-auto">{children}</main>
       </body>
     </html>
   );
