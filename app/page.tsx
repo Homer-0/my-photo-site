@@ -3,17 +3,8 @@
 import { useState } from "react";
 import Image from "next/image";
 import Masonry from "react-masonry-css";
-import dynamic from "next/dynamic";
-
-const Zoom = dynamic(
-  () => import("yet-another-react-lightbox/plugins/zoom"),
-  { ssr: false }
-);
-const Lightbox = dynamic(
-  () => import("yet-another-react-lightbox"),
-  { ssr: false }
-);
-
+import Lightbox from "yet-another-react-lightbox";
+import Zoom from "yet-another-react-lightbox/plugins/zoom";
 import "yet-another-react-lightbox/styles.css";
 
 const images = [
@@ -60,16 +51,27 @@ export default function Home() {
         ))}
       </Masonry>
 
-      {typeof window !== "undefined" && Lightbox && (
-        <Lightbox
-          open={index >= 0}
-          close={() => setIndex(-1)}
-          index={index}
-          slides={images.map(({ src, alt }) => ({ src, description: alt }))}
-          plugins={[Zoom]}
-          zoom={{ maxZoomPixelRatio: 2 }}
-        />
-      )}
+      <Lightbox
+        open={index >= 0}
+        close={() => setIndex(-1)}
+        index={index}
+        slides={images.map(({ src, alt }) => ({
+          src,
+          description: alt,
+        }))}
+        plugins={[Zoom]}
+        styles={{
+          container: { backgroundColor: "rgba(255,255,255,0.95)" },
+          description: {
+            color: "#111",
+            fontSize: "1rem",
+            fontStyle: "italic",
+            textAlign: "center",
+            marginTop: "1rem",
+          },
+        }}
+        zoom={{ maxZoomPixelRatio: 2 }}
+      />
     </div>
   );
 }
