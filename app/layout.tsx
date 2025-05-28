@@ -2,7 +2,7 @@ import "./globals.css";
 import type { Metadata } from "next";
 import Link from "next/link";
 import ThemeSwitcher from "../components/ThemeSwitcher";
-import Providers from "./providers";
+import { Providers } from "./providers";
 
 export const metadata: Metadata = {
   title: "Manos Tzavidas – Photography",
