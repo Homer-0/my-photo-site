@@ -41,13 +41,14 @@ export default function Home() {
             className="cursor-zoom-in transition-transform hover:scale-[1.02]"
           >
             <Image
-              src={img.src}
-              alt={img.alt}
-              width={1200}
-              height={800}
-              className="rounded-xl shadow-md object-cover w-full h-auto"
-              priority={i < 2}
-            />
+  src={img.src}
+  alt={img.alt}
+  width={1200}
+  height={800}
+  className="rounded-xl shadow-md object-cover w-full h-auto"
+  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+  priority={i < 2}
+/>
           </div>
         ))}
       </Masonry>
