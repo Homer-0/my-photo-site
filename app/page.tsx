@@ -43,8 +43,7 @@ export default function Home() {
             <Image
               src={img.src}
               alt={img.alt}
-              fill
-              className="w-full h-auto object-cover"
+              className="w-full h-auto rounded-xl object-cover"
               sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
               priority={i === 0}
             />
