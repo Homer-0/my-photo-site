@@ -4,8 +4,10 @@ import { useState } from "react";
 import Image from "next/image";
 import Masonry from "react-masonry-css";
 import dynamic from "next/dynamic";
-import "yet-another-react-lightbox/styles.css";
 
+import Lightbox from "yet-another-react-lightbox";
+import Zoom from "yet-another-react-lightbox/plugins/zoom";
+import "yet-another-react-lightbox/styles.css";
 // Dynamically import Lightbox and Zoom plugin with SSR disabled
 const Lightbox = dynamic(() => import("yet-another-react-lightbox"), { ssr: false });
 const Zoom = dynamic(() => import("yet-another-react-lightbox/plugins/zoom"), { ssr: false });
