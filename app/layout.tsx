@@ -39,14 +39,14 @@ export default function RootLayout({
               </Link>
             </nav>
 
-            {/* Right: Empty space (placeholder) */}
+            {/* Right: Placeholder to balance the layout */}
             <div className="w-6" />
           </div>
         </header>
 
-        {/* Section Title: Recent work */}
+        {/* Section Title: Centered Recent Work */}
         <div className="max-w-6xl mx-auto px-6 pt-6 pb-2">
-          <h2 className="text-lg font-medium tracking-wide uppercase text-neutral-600">
+          <h2 className="text-lg font-medium tracking-wide uppercase text-neutral-600 text-center">
             Recent Work
           </h2>
         </div>
