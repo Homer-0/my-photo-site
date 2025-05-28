@@ -15,23 +15,23 @@ export default function ThemeSwitcher() {
   if (!mounted) return null;
 
   return (
-    <div className="fixed left-4 top-1/2 -translate-y-1/2 z-50 flex flex-col items-center space-y-4">
+    <div className="fixed left-4 top-1/2 -translate-y-1/2 z-50 flex flex-col items-center space-y-3">
       <button
         onClick={() => setTheme('dark')}
-        className="w-12 h-24 bg-gray-200 dark:bg-gray-800 rounded-full shadow-md flex flex-col items-center overflow-hidden px-1 pt-2 pb-2"
+        className="w-10 h-20 bg-gray-200 dark:bg-gray-800 rounded-full shadow-md flex flex-col items-center justify-center overflow-hidden"
       >
-        <Moon size={18} />
-        <span className="text-[10px] font-bold transform -rotate-90 origin-bottom translate-y-2 tracking-widest">
+        <Moon size={16} />
+        <span className="text-[10px] font-bold transform -rotate-90 origin-center tracking-widest mt-2">
           DARK
         </span>
       </button>
 
       <button
         onClick={() => setTheme('light')}
-        className="w-12 h-24 bg-white dark:bg-gray-700 rounded-full shadow-md flex flex-col items-center overflow-hidden px-1 pt-2 pb-2"
+        className="w-10 h-20 bg-white dark:bg-gray-700 rounded-full shadow-md flex flex-col items-center justify-center overflow-hidden"
       >
-        <Sun size={18} />
-        <span className="text-[10px] font-bold transform -rotate-90 origin-bottom translate-y-2 tracking-widest">
+        <Sun size={16} />
+        <span className="text-[10px] font-bold transform -rotate-90 origin-center tracking-widest mt-2">
           LIGHT
         </span>
       </button>
