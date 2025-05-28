@@ -15,23 +15,23 @@ export default function ThemeSwitcher() {
   if (!mounted) return null;
 
   return (
-    <div className="fixed left-4 top-1/2 -translate-y-1/2 z-50 flex flex-col items-center space-y-4">
+    <div className="fixed left-4 top-1/2 -translate-y-1/2 z-50 flex flex-col items-center">
       <button
         onClick={() => setTheme('dark')}
         className="w-6 h-16 bg-gray-200 dark:bg-gray-800 rounded-full shadow-md flex flex-col items-center justify-start pt-2 overflow-hidden"
       >
         <Moon size={14} />
-        <span className="text-[10px] font-bold transform -rotate-90 origin-center tracking-widest mt-3">
+        <span className="text-[9px] font-bold transform -rotate-90 origin-center tracking-widest mt-3">
           DARK
         </span>
       </button>
 
       <button
         onClick={() => setTheme('light')}
-        className="w-6 h-16 bg-white dark:bg-gray-700 rounded-full shadow-md flex flex-col items-center justify-start pt-2 overflow-hidden"
+        className="-mt-2 w-6 h-16 bg-white dark:bg-gray-700 rounded-full shadow-md flex flex-col items-center justify-start pt-2 overflow-hidden"
       >
         <Sun size={14} />
-        <span className="text-[10px] font-bold transform -rotate-90 origin-center tracking-widest mt-3">
+        <span className="text-[9px] font-bold transform -rotate-90 origin-center tracking-widest mt-3">
           LIGHT
         </span>
       </button>
