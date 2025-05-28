@@ -11,7 +11,7 @@ const images = [
   { src: "/images/Andelsbolig.jpg", alt: "Andelsbolig" },
   { src: "/images/track-field.jpg", alt: "Track & Field" },
   { src: "/images/Home.jpg", alt: "Mølle Allé" },
-  { src: "/images/lake.jpg", alt: "Lake" },
+  { src: "/images/Lake.jpg", alt: "Lake" },
   { src: "/images/metro.jpg", alt: "Metro" },
   { src: "/images/monstera.jpg", alt: "Monstera" },
   { src: "/images/monstera2.jpg", alt: "Monstera 2" },
