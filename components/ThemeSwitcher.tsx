@@ -20,14 +20,14 @@ export default function ThemeSwitcher() {
       <button
         onClick={() => setTheme('light')}
         className={clsx(
-          'w-12 h-28 flex flex-col items-center justify-center rounded-full shadow-md transition-all duration-300',
+          'w-14 h-32 flex flex-col items-center justify-center rounded-full shadow-md transition-all duration-300 px-1 py-2',
           theme === 'light'
             ? 'bg-white text-black'
             : 'bg-gray-100 text-gray-600'
         )}
       >
-        <Sun size={20} />
-        <span className="text-xs font-semibold mt-1 rotate-90 whitespace-nowrap tracking-wider">
+        <Sun size={20} className="mb-1" />
+        <span className="text-xs font-semibold transform -rotate-90 origin-center tracking-wider">
           LIGHT
         </span>
       </button>
@@ -35,14 +35,14 @@ export default function ThemeSwitcher() {
       <button
         onClick={() => setTheme('dark')}
         className={clsx(
-          'w-12 h-28 flex flex-col items-center justify-center rounded-full shadow-md transition-all duration-300',
+          'w-14 h-32 flex flex-col items-center justify-center rounded-full shadow-md transition-all duration-300 px-1 py-2',
           theme === 'dark'
             ? 'bg-white text-black'
             : 'bg-gray-100 text-gray-600'
         )}
       >
-        <Moon size={20} />
-        <span className="text-xs font-semibold mt-1 rotate-90 whitespace-nowrap tracking-wider">
+        <Moon size={20} className="mb-1" />
+        <span className="text-xs font-semibold transform -rotate-90 origin-center tracking-wider">
           DARK
         </span>
       </button>
