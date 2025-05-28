@@ -1,14 +1,12 @@
-import './globals.css';
-import Link from 'next/link';
-import { Inter } from 'next/font/google';
-import ThemeSwitcher from '../components/ThemeSwitcher';
-import { Providers } from './providers';
+import "./globals.css";
+import type { Metadata } from "next";
+import Link from "next/link";
+import ThemeSwitcher from "../components/ThemeSwitcher";
+import Providers from "./providers";
 
-const inter = Inter({ subsets: ['latin'] });
-
-export const metadata = {
-  title: 'Manos Tzavidas – Photography',
-  description: 'Photography portfolio by Manos Tzavidas',
+export const metadata: Metadata = {
+  title: "Manos Tzavidas – Photography",
+  description: "Photography portfolio by Manos Tzavidas",
 };
 
 export default function RootLayout({
@@ -17,35 +15,25 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
+    <html lang="en" suppressHydrationWarning>
+      <body className="bg-white text-black dark:bg-black dark:text-white transition-colors">
         <Providers>
-          <header className="sticky top-0 z-50 bg-white/90 dark:bg-black/90 backdrop-blur border-b border-gray-200 dark:border-gray-800">
-            <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
-              {/* Left: Theme Switcher */}
-              <div>
-                <ThemeSwitcher />
-              </div>
-
-              {/* Center: Navigation */}
-              <div className="flex space-x-6 text-sm sm:text-base font-medium tracking-wide">
+          <header className="sticky top-0 z-40 border-b border-gray-300 dark:border-gray-700 bg-white dark:bg-black px-4 py-4">
+            <div className="flex justify-between items-center max-w-5xl mx-auto">
+              <div className="text-lg font-bold">MANOS TZAVIDAS.</div>
+              <nav className="space-x-6 text-sm font-medium">
                 <Link href="/">Home</Link>
-                <Link href="#">Chapters</Link>
-                <Link href="#">Journal</Link>
-                <Link href="#">About</Link>
-              </div>
-
-              {/* Right: Empty for now */}
-              <div className="w-6" />
+                <Link href="/chapters">Chapters</Link>
+                <Link href="/journal">Journal</Link>
+                <Link href="/about">About</Link>
+              </nav>
             </div>
           </header>
-
-          {/* "Recent Work" heading */}
-          <div className="text-center text-lg font-semibold mt-8 mb-4">
-            Recent work
-          </div>
-
-          {children}
+          <ThemeSwitcher />
+          <main className="max-w-5xl mx-auto px-4 py-8">
+            <h2 className="text-center font-semibold text-lg mb-6">Recent work</h2>
+            {children}
+          </main>
         </Providers>
       </body>
     </html>
