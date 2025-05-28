@@ -21,7 +21,7 @@ export default function ThemeSwitcher() {
         className="w-6 h-16 bg-gray-200 dark:bg-gray-800 rounded-full shadow-md flex flex-col items-center justify-start pt-2 overflow-hidden"
       >
         <Moon size={14} />
-        <span className="text-[9px] font-bold transform -rotate-90 origin-center tracking-widest mt-3.5">
+        <span className="text-[9px] font-bold transform -rotate-90 origin-center tracking-widest mt-3">
           DARK
         </span>
       </button>
@@ -31,7 +31,7 @@ export default function ThemeSwitcher() {
         className="w-6 h-16 bg-white dark:bg-gray-700 rounded-full shadow-md flex flex-col items-center justify-start pt-2 overflow-hidden"
       >
         <Sun size={14} />
-        <span className="text-[9px] font-bold transform -rotate-90 origin-center tracking-widest mt-3.5">
+        <span className="text-[9px] font-bold transform -rotate-90 origin-center tracking-widest mt-3">
           LIGHT
         </span>
       </button>
