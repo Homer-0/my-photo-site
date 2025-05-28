@@ -6,15 +6,15 @@ import Image from "next/image";
 import Masonry from "react-masonry-css";
 import "yet-another-react-lightbox/styles.css";
 
-// Dynamically import Lightbox and Zoom plugin with SSR disabled
-const Lightbox = dynamic(() => import("yet-another-react-lightbox"), { ssr: false });
-const Zoom = dynamic(() => import("yet-another-react-lightbox/plugins/zoom"), { ssr: false });
+// ✅ Static imports — these are safe for server builds
+import Lightbox from "yet-another-react-lightbox";
+import Zoom from "yet-another-react-lightbox/plugins/zoom";
 
 const images = [
   { src: "/images/Andelsbolig.jpg", alt: "Andelsbolig" },
   { src: "/images/track-field.jpg", alt: "Track & Field" },
   { src: "/images/Home.jpg", alt: "Mølle Allé" },
-  { src: "/images/Lake.jpg", alt: "Lake" }, // ← uppercase "L"
+  { src: "/images/Lake.jpg", alt: "Lake" }, // ← uppercase L
   { src: "/images/metro.jpg", alt: "Metro" },
   { src: "/images/monstera.jpg", alt: "Monstera" },
   { src: "/images/monstera2.jpg", alt: "Monstera 2" },
@@ -55,26 +55,24 @@ export default function Home() {
         ))}
       </Masonry>
 
-      {typeof window !== "undefined" && Lightbox && Zoom && (
-        <Lightbox
-          open={index >= 0}
-          close={() => setIndex(-1)}
-          index={index}
-          slides={images}
-          plugins={[Zoom]}
-          zoom={{ maxZoomPixelRatio: 2 }}
-          styles={{
-            container: { backgroundColor: "rgba(255,255,255,0.95)" },
-            description: {
-              color: "#111",
-              fontSize: "1rem",
-              fontStyle: "italic",
-              textAlign: "center",
-              marginTop: "1rem",
-            },
-          }}
-        />
-      )}
+      <Lightbox
+        open={index >= 0}
+        close={() => setIndex(-1)}
+        index={index}
+        slides={images}
+        plugins={[Zoom]}
+        zoom={{ maxZoomPixelRatio: 2 }}
+        styles={{
+          container: { backgroundColor: "rgba(255,255,255,0.95)" },
+          description: {
+            color: "#111",
+            fontSize: "1rem",
+            fontStyle: "italic",
+            textAlign: "center",
+            marginTop: "1rem",
+          },
+        }}
+      />
     </div>
   );
 }
