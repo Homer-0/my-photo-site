@@ -1,14 +1,7 @@
-// app/layout.tsx
-import "./globals.css";
-import { Inter } from "next/font/google";
+"use client";
+
 import Link from "next/link";
-
-const inter = Inter({ subsets: ["latin"] });
-
-export const metadata = {
-  title: "Manos Tzavidas",
-  description: "Photography by Manos Tzavidas",
-};
+import { Instagram } from "lucide-react";
 
 export default function RootLayout({
   children,
@@ -17,19 +10,35 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <header className="w-full bg-white border-b px-6 py-4 flex items-center justify-between text-sm font-medium">
-          <div className="text-xl font-semibold tracking-tight">
-            <Link href="/">MANOS TZAVIDAS.</Link>
+      <body className="min-h-screen bg-white text-black">
+        <header className="w-full px-6 py-4 border-b border-gray-300 flex items-center justify-between">
+          {/* Left: Name */}
+          <div className="text-lg font-semibold tracking-widest uppercase">
+            MANOS TZAVIDAS.
           </div>
-          <nav className="flex space-x-6">
-            <Link href="/" className="hover:underline">Home</Link>
-            <Link href="#" className="hover:underline">Chapters</Link>
-            <Link href="#" className="hover:underline">Journal</Link>
-            <Link href="#" className="hover:underline">About</Link>
+
+          {/* Center: Navigation Links */}
+          <nav className="absolute left-1/2 transform -translate-x-1/2 space-x-6 text-sm font-medium">
+            <Link href="/">Home</Link>
+            <Link href="/chapters">Chapters</Link>
+            <Link href="/journal">Journal</Link>
+            <Link href="/about">About</Link>
           </nav>
+
+          {/* Right: Instagram */}
+          <div>
+            <a
+              href="https://www.instagram.com/your_username_here"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram"
+            >
+              <Instagram className="h-5 w-5" />
+            </a>
+          </div>
         </header>
-        <main className="px-4 pt-6">{children}</main>
+
+        <main className="px-6 pt-8 pb-16 max-w-screen-xl mx-auto">{children}</main>
       </body>
     </html>
   );
