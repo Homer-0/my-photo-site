@@ -1,4 +1,6 @@
 // app/layout.tsx
+"use client";
+
 import "./globals.css";
 import Link from "next/link";
 import ThemeSwitcher from "../components/ThemeSwitcher";
@@ -33,17 +35,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <ThemeSwitcher />
             </div>
           </div>
-
-          {/* Grey Divider */}
-          <div className="border-t border-gray-200 dark:border-gray-700"></div>
-
-          {/* Recent Work label */}
-          <div className="py-4 text-center">
-            <h2 className="text-base font-medium uppercase tracking-widest text-gray-600 dark:text-gray-400">
-              Recent Work
-            </h2>
-          </div>
         </header>
+
+        {/* Recent Work title, separate from navbar */}
+        <div className="py-6 text-center">
+          <h2 className="text-base font-medium uppercase tracking-widest text-gray-600 dark:text-gray-400">
+            Through the Lens
+          </h2>
+        </div>
 
         {/* Page Content */}
         <main className="max-w-7xl mx-auto px-4">{children}</main>
