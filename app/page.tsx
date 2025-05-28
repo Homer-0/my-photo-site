@@ -2,71 +2,54 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import Masonry from "react-masonry-css";
-import dynamic from "next/dynamic";
-
 import Lightbox from "yet-another-react-lightbox";
 import Zoom from "yet-another-react-lightbox/plugins/zoom";
 import "yet-another-react-lightbox/styles.css";
-// Dynamically import Lightbox and Zoom plugin with SSR disabled
-const Lightbox = dynamic(() => import("yet-another-react-lightbox"), { ssr: false });
-const Zoom = dynamic(() => import("yet-another-react-lightbox/plugins/zoom"), { ssr: false });
 
 const images = [
+  { src: "/images/Lake.jpg", alt: "Lake" },
   { src: "/images/Andelsbolig.jpg", alt: "Andelsbolig" },
-  { src: "/images/track-field.jpg", alt: "Track & Field" },
-  { src: "/images/Home.jpg", alt: "Mølle Allé" },
-  { src: "/images/Lake.jpg", alt: "Lake" }, // ✅ Respecting your note about uppercase "L"
-  { src: "/images/metro.jpg", alt: "Metro" },
-  { src: "/images/monstera.jpg", alt: "Monstera" },
-  { src: "/images/monstera2.jpg", alt: "Monstera 2" },
-  { src: "/images/building.jpg", alt: "Building" },
+  { src: "/images/Athen.jpg", alt: "Athen" },
+  { src: "/images/Beach.jpg", alt: "Beach" },
+  { src: "/images/Block.jpg", alt: "Block" },
+  { src: "/images/Globe.jpg", alt: "Globe" },
+  { src: "/images/Kitchen.jpg", alt: "Kitchen" },
+  { src: "/images/Mirror.jpg", alt: "Mirror" },
+  { src: "/images/Red.jpg", alt: "Red" },
+  { src: "/images/Sunrise.jpg", alt: "Sunrise" },
 ];
 
 export default function Home() {
   const [index, setIndex] = useState(-1);
 
-  const breakpointColumnsObj = {
-    default: 3,
-    1024: 2,
-    640: 1, // 👈 Forces 1 column on phones
-  };
-
   return (
-    <div className="text-black px-4 sm:px-6 md:px-12 lg:px-20">
-      <Masonry
-        breakpointCols={breakpointColumnsObj}
-        className="flex gap-6"
-        columnClassName="space-y-6"
-      >
+    <main className="flex min-h-screen flex-col items-center justify-start px-4 md:px-16 py-12 bg-white text-black">
+      <h1 className="text-2xl md:text-3xl font-light tracking-widest mb-8 text-center">
+        MANOS TZAVIDAS.
+      </h1>
+
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 w-full max-w-6xl">
         {images.map((img, i) => (
-          <div
-            key={i}
-            onClick={() => setIndex(i)}
-            className="cursor-zoom-in transition-transform hover:scale-[1.02]"
-          >
+          <button key={i} onClick={() => setIndex(i)} className="relative w-full h-40 sm:h-48 md:h-64">
             <Image
               src={img.src}
               alt={img.alt}
-              width={1200}
-              height={800}
-              quality={90}
-              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-              className="rounded-xl shadow-md object-cover w-full h-auto"
-              priority={i < 2}
+              fill
+              className="object-cover rounded"
+              sizes="(max-width: 768px) 50vw, (max-width: 1200px) 25vw, 20vw"
+              priority={i === 0} // prioritize the first image
             />
-          </div>
+          </button>
         ))}
-      </Masonry>
+      </div>
 
       <Lightbox
         open={index >= 0}
         close={() => setIndex(-1)}
         index={index}
-        slides={images.map(({ src, alt }) => ({ src, alt }))}
+        slides={images.map((img) => ({ src: img.src }))}
         plugins={[Zoom]}
-        zoom={{ maxZoomPixelRatio: 2 }}
       />
-    </div>
+    </main>
   );
 }
