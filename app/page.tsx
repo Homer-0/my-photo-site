@@ -3,19 +3,15 @@
 import { useState } from "react";
 import Image from "next/image";
 import Masonry from "react-masonry-css";
-import dynamic from "next/dynamic";
-
-// Dynamically import Lightbox and Zoom plugin with SSR disabled
-const Lightbox = dynamic(() => import("yet-another-react-lightbox"), { ssr: false });
-const Zoom = dynamic(() => import("yet-another-react-lightbox/plugins/zoom"), { ssr: false });
-
+import Lightbox from "yet-another-react-lightbox";
+import Zoom from "yet-another-react-lightbox/plugins/zoom";
 import "yet-another-react-lightbox/styles.css";
 
 const images = [
   { src: "/images/Andelsbolig.jpg", alt: "Andelsbolig" },
   { src: "/images/track-field.jpg", alt: "Track & Field" },
   { src: "/images/Home.jpg", alt: "Mølle Allé" },
-  { src: "/images/Lake.jpg", alt: "Lake" }, // capital "L"
+  { src: "/images/Lake.jpg", alt: "Lake" }, // Capital L!
   { src: "/images/metro.jpg", alt: "Metro" },
   { src: "/images/monstera.jpg", alt: "Monstera" },
   { src: "/images/monstera2.jpg", alt: "Monstera 2" },
@@ -61,10 +57,7 @@ export default function Home() {
         open={index >= 0}
         close={() => setIndex(-1)}
         index={index}
-        slides={images.map(({ src, alt }) => ({
-          src,
-          description: alt,
-        }))}
+        slides={images.map(({ src, alt }) => ({ src, description: alt }))}
         plugins={[Zoom]}
         zoom={{ maxZoomPixelRatio: 2 }}
       />
