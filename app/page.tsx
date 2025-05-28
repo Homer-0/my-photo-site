@@ -62,13 +62,6 @@ export default function Home() {
         plugins={[Zoom]}
         styles={{
           container: { backgroundColor: "rgba(255,255,255,0.95)" },
-          description: {
-            color: "#111",
-            fontSize: "1rem",
-            fontStyle: "italic",
-            textAlign: "center",
-            marginTop: "1rem",
-          },
         }}
         zoom={{ maxZoomPixelRatio: 2 }}
       />
