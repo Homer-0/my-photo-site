@@ -6,12 +6,13 @@ import Masonry from "react-masonry-css";
 import Lightbox from "yet-another-react-lightbox";
 import Zoom from "yet-another-react-lightbox/plugins/zoom";
 import "yet-another-react-lightbox/styles.css";
+import ThemeSwitcher from "@/components/ThemeSwitcher";
 
 const images = [
   { src: "/images/Andelsbolig.jpg", alt: "Andelsbolig" },
   { src: "/images/track-field.jpg", alt: "Track & Field" },
   { src: "/images/Home.jpg", alt: "Mølle Allé" },
-  { src: "/images/Lake.jpg", alt: "Lake" }, // case-sensitive
+  { src: "/images/Lake.jpg", alt: "Lake" },
   { src: "/images/metro.jpg", alt: "Metro" },
   { src: "/images/monstera.jpg", alt: "Monstera" },
   { src: "/images/monstera2.jpg", alt: "Monstera 2" },
@@ -28,7 +29,14 @@ export default function Home() {
   };
 
   return (
-    <div className="text-black p-4">
+    <main className="relative px-6 md:px-12 lg:px-20">
+      {/* Light/Dark toggle */}
+      <div className="fixed left-2 top-1/2 transform -translate-y-1/2 z-40">
+        <ThemeSwitcher />
+      </div>
+
+      <h2 className="text-center font-semibold text-lg mb-8 mt-6">Recent work</h2>
+
       <Masonry
         breakpointCols={breakpointColumnsObj}
         className="flex gap-6"
@@ -43,6 +51,8 @@ export default function Home() {
             <Image
               src={img.src}
               alt={img.alt}
+              width={1000}
+              height={1000}
               className="w-full h-auto rounded-xl object-cover"
               sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
               priority={i === 0}
@@ -55,16 +65,13 @@ export default function Home() {
         open={index >= 0}
         close={() => setIndex(-1)}
         index={index}
-        slides={images.map(({ src, alt }) => ({
-          src,
-          description: alt,
-        }))}
+        slides={images.map(({ src, alt }) => ({ src, description: alt }))}
         plugins={[Zoom]}
         styles={{
           container: { backgroundColor: "rgba(255,255,255,0.95)" },
         }}
         zoom={{ maxZoomPixelRatio: 2 }}
       />
-    </div>
+    </main>
   );
 }

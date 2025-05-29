@@ -6,9 +6,10 @@
 
 body {
   font-family: 'Satoshi', sans-serif;
-  @apply bg-white text-black;
+  @apply bg-white text-black dark:bg-black dark:text-white;
 }
 
-.dark body {
-  @apply bg-black text-white;
+.writing-vertical {
+  writing-mode: vertical-rl;
+  text-orientation: upright;
 }
