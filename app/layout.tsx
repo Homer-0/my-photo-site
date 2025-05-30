@@ -14,15 +14,17 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Providers>
           <header className="sticky top-0 z-50 flex items-center justify-between px-4 py-4 border-b bg-white dark:bg-black">
             {/* Left: Site title */}
-            <h1 className="text-lg font-bold">MANOS TZAVIDAS.</h1>
+            <h1 className="text-lg font-bold whitespace-nowrap">
+              <Link href="/">MANOS TZAVIDAS.</Link>
+            </h1>
 
-            {/* Center: Navigation (perfectly centered) */}
-            <nav className="w-full flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-8 py-4 text-[15px] font-medium">
-  <Link href="/">Home</Link>
-  <Link href="/chapters">Chapters</Link>
-  <Link href="/journal">Journal</Link>  
-  <Link href="/about">About</Link>      
-</nav>
+            {/* Center: Navigation (responsive layout) */}
+            <nav className="flex flex-wrap justify-center gap-4 sm:gap-6 text-sm font-medium">
+              <Link href="/">Home</Link>
+              <Link href="/chapters">Chapters</Link>
+              <Link href="/journal">Journal</Link>
+              <Link href="/about">About</Link>
+            </nav>
 
             {/* Right: Reserved space to balance layout */}
             <div className="w-32" />
