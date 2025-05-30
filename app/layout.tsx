@@ -17,7 +17,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <h1 className="text-lg font-bold">MANOS TZAVIDAS.</h1>
 
             {/* Center: Navigation (perfectly centered) */}
-            <nav className="absolute left-1/2 -translate-x-1/2 flex gap-6 text-[15px] font-medium">
+            <nav className="w-full flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-8 py-4 text-[15px] font-medium">
   <Link href="/">Home</Link>
   <Link href="/chapters">Chapters</Link>
   <Link href="/journal">Journal</Link>  
