@@ -1,7 +1,6 @@
 import "./globals.css";
 import Link from "next/link";
 import { Providers } from "./providers";
-import ThemeSwitcher from "@/components/ThemeSwitcher";
 
 export const metadata = {
   title: "Manos Tzavidas – Photography",
@@ -18,12 +17,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <h1 className="text-lg font-bold">MANOS TZAVIDAS.</h1>
 
             {/* Center: Navigation (perfectly centered) */}
-            <nav className="absolute left-1/2 -translate-x-1/2 flex gap-6 text-sm font-medium">
-              <Link href="/">Home</Link>
-              <Link href="#">Chapters</Link>
-              <Link href="#">Journal</Link>
-              <Link href="#">About</Link>
-            </nav>
+            <nav className="absolute left-1/2 -translate-x-1/2 flex gap-6 text-[15px] font-medium">
+  <Link href="/">Home</Link>
+  <Link href="/chapters">Chapters</Link>
+  <Link href="/journal">Journal</Link>  
+  <Link href="/about">About</Link>      
+</nav>
 
             {/* Right: Reserved space to balance layout */}
             <div className="w-32" />

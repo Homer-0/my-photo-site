@@ -8,15 +8,15 @@ export default function Navbar() {
       <nav className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         {/* Left: Name */}
         <div className="text-lg font-bold tracking-tight">
-          <Link href="/">MANOS TZAVIDAS.</Link>
+          <Link href="/"><span>MANOS TZAVIDAS.</span></Link>
         </div>
 
         {/* Center: Navigation Links */}
-        <div className="space-x-8 text-sm font-medium hidden md:flex">
-          <Link href="/">Home</Link>
-          <Link href="/chapters">Chapters</Link>
-          <Link href="/journal">Journal</Link>
-          <Link href="/about">About</Link>
+        <div className="space-x-8 text-sm font-medium flex">
+          <Link href="/"><span>Home</span></Link>
+          <Link href="/chapters"><span>Chapters</span></Link>
+          <Link href="/journal"><span>Journal</span></Link>
+          <Link href="/about"><span className="relative z-50">About</span></Link>
         </div>
 
         {/* Right: Leave empty or add social/link in future */}

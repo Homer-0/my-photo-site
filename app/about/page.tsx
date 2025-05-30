@@ -1,12 +1,17 @@
+import ThemeSwitcher from "@/components/ThemeSwitcher";
+
 export default function About() {
   return (
-    <>
+    <div className="relative px-6 pt-10">
+      <div className="absolute top-4 right-4 z-50">
+        <ThemeSwitcher />
+      </div>
       <h1 className="text-3xl font-bold mb-4">About Me</h1>
       <p className="text-gray-700 leading-relaxed">
-        I'm Manos — a photographer based in Copenhagen, working with a Leica M11-P to capture quiet light, street details, and emotional stillness.
+        I'm Manos — a photographer based in Copenhagen.
         <br /><br />
-        My work explores both the everyday and the unseen, blending fine art and documentary elements. Welcome to my visual archive.
+        More to come.
       </p>
-    </>
+    </div>
   );
 }
