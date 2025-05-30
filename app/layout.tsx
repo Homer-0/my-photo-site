@@ -1,6 +1,7 @@
 import "./globals.css";
 import Link from "next/link";
 import { Providers } from "./providers";
+import ThemeSwitcher from "@/components/ThemeSwitcher";
 
 export const metadata = {
   title: "Manos Tzavidas – Photography",
@@ -30,8 +31,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               </nav>
             </div>
           </header>
-
-          {children}
+          <main>{children}</main>
         </Providers>
       </body>
     </html>

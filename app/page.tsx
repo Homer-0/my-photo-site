@@ -32,7 +32,6 @@ export default function Home() {
 
   return (
     <main className="relative">
-      {/* Light/Dark toggle */}
       <div className="fixed left-2 top-1/2 transform -translate-y-1/2 z-40">
         <ThemeSwitcher />
       </div>
