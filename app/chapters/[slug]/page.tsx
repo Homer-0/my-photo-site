@@ -56,9 +56,9 @@ export default function AlbumPage() {
 
   return (
     <main className="relative px-2 md:px-6 lg:px-10 pt-4 pb-10 max-w-[1600px] mx-auto">
-      <div className="fixed left-2 top-1/2 transform -translate-y-1/2 z-40">
-        <ThemeSwitcher />
-      </div>
+      <div className="fixed left-2 top-1/2 transform -translate-y-1/2 z-40 hidden sm:block">
+  <ThemeSwitcher />
+</div>
       <h1 className="text-2xl font-semibold mb-4 text-center">{album.title}</h1>
       <Masonry
         breakpointCols={breakpointColumnsObj}
