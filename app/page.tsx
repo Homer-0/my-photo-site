@@ -48,14 +48,14 @@ export default function Home() {
             <div
               key={i}
               onClick={() => setIndex(i)}
-              className="relative w-full cursor-zoom-in overflow-hidden rounded-xl shadow-md hover:scale-[1.01] transition-transform"
+              className="relative w-full cursor-zoom-in overflow-hidden shadow-md hover:scale-[1.01] transition-transform"
             >
               <Image
                 src={img.src}
                 alt={img.alt}
                 width={1000}
                 height={1000}
-                className="w-full h-auto rounded-xl object-cover"
+                className="w-full h-auto object-cover"
                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 priority={i === 0}
               />

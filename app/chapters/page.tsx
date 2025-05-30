@@ -21,7 +21,7 @@ export default function ChaptersPage() {
             <Link
               key={chapter.slug}
               href={`/chapters/${chapter.slug}`}
-              className="relative group overflow-hidden rounded-lg shadow-lg aspect-square"
+              className="relative group overflow-hidden shadow-lg aspect-square"
             >
               <div className="relative w-full h-full">
                 <img
