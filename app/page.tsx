@@ -8,6 +8,7 @@ import Zoom from "yet-another-react-lightbox/plugins/zoom";
 import "yet-another-react-lightbox/styles.css";
 import ThemeSwitcher from "@/components/ThemeSwitcher";
 import PageContainer from "@/components/PageContainer";
+import Link from "next/link";
 
 const images = [
   { src: "/images/Andelsbolig.jpg", alt: "Andelsbolig" },
