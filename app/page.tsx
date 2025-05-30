@@ -32,9 +32,9 @@ export default function Home() {
 
   return (
     <main className="relative">
-      <div className="fixed left-2 top-1/2 transform -translate-y-1/2 z-40">
-        <ThemeSwitcher />
-      </div>
+      <div className="fixed left-2 top-1/2 transform -translate-y-1/2 z-40 hidden sm:block">
+  <ThemeSwitcher />
+</div>
 
       <PageContainer>
         <h2 className="text-center font-semibold text-lg mb-4 mt-4">Recent work</h2>
