@@ -40,10 +40,10 @@ export default function Home() {
         <h2 className="text-center font-semibold text-lg mb-4 mt-4">Recent work</h2>
 
         <Masonry
-          breakpointCols={breakpointColumnsObj}
-          className="flex gap-6 pl-6 sm:pl-10"
-          columnClassName="space-y-6"
-        >
+  breakpointCols={breakpointColumnsObj}
+  className="flex gap-6 px-4 sm:px-10"
+  columnClassName="space-y-6"
+>
           {images.map((img, i) => (
             <div
               key={i}
