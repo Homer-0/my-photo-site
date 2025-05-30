@@ -12,12 +12,12 @@ export default function Navbar() {
         </div>
 
         {/* Center: Navigation Links */}
-        <div className="space-x-8 text-sm font-medium flex">
-          <Link href="/"><span>Home</span></Link>
-          <Link href="/chapters"><span>Chapters</span></Link>
-          <Link href="/journal"><span>Journal</span></Link>
-          <Link href="/about"><span className="relative z-50">About</span></Link>
-        </div>
+        <div className="flex flex-col sm:flex-row gap-4 sm:gap-8 text-xs font-medium z-50 items-center">
+  <Link href="/"><span>Home</span></Link>
+  <Link href="/chapters"><span>Chapters</span></Link>
+  <Link href="/journal"><span>Journal</span></Link>
+  <Link href="/about"><span>About</span></Link>
+</div>
 
         {/* Right: Leave empty or add social/link in future */}
         <div className="w-12" />
