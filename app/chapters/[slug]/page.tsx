@@ -5,6 +5,8 @@ import { useParams } from "next/navigation";
 import Lightbox from "yet-another-react-lightbox";
 import Zoom from "yet-another-react-lightbox/plugins/zoom";
 import "yet-another-react-lightbox/styles.css";
+import Image from "next/image";
+import Masonry from "react-masonry-css";
 
 const albums = [
   {
@@ -41,24 +43,42 @@ export default function AlbumPage() {
 
   const [index, setIndex] = useState(-1);
 
+  const breakpointColumnsObj = {
+    default: 3,
+    1024: 2,
+    640: 1,
+  };
+
   if (!album) {
     return <div className="text-center p-10">Album not found</div>;
   }
 
   return (
-    <main className="relative px-2 md:px-6 lg:px-10 py-10 max-w-[1600px] mx-auto">
-      <h1 className="text-3xl font-bold mb-8 text-center">{album.title}</h1>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+    <main className="relative px-2 md:px-6 lg:px-10 pt-4 pb-10 max-w-[1600px] mx-auto">
+      <h1 className="text-2xl font-semibold mb-4 text-center">{album.title}</h1>
+      <Masonry
+        breakpointCols={breakpointColumnsObj}
+        className="flex gap-6"
+        columnClassName="space-y-6"
+      >
         {album.images.map((src, i) => (
-          <img
+          <div
             key={i}
-            src={src}
-            alt={`${album.title} photo ${i + 1}`}
-            className="w-full h-auto object-cover rounded-xl cursor-zoom-in hover:scale-[1.01] transition-transform"
             onClick={() => setIndex(i)}
-          />
+            className="relative w-full cursor-zoom-in overflow-hidden rounded-xl shadow-md hover:scale-[1.01] transition-transform"
+          >
+            <Image
+              src={src}
+              alt={`${album.title} photo ${i + 1}`}
+              width={1000}
+              height={1000}
+              className="w-full h-auto rounded-xl object-cover"
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+              priority={i === 0}
+            />
+          </div>
         ))}
-      </div>
+      </Masonry>
 
       <Lightbox
         open={index >= 0}

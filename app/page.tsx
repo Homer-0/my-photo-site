@@ -38,7 +38,7 @@ export default function Home() {
       </div>
 
       <PageContainer>
-        <h2 className="text-center font-semibold text-lg mb-6 mt-6">Recent work</h2>
+        <h2 className="text-center font-semibold text-lg mb-4 mt-4">Recent work</h2>
 
         <Masonry
           breakpointCols={breakpointColumnsObj}
