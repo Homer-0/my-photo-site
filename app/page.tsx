@@ -37,11 +37,11 @@ export default function Home() {
       </div>
 
       <PageContainer>
-        <h2 className="text-center font-semibold text-lg mb-8 mt-6">Recent work</h2>
+        <h2 className="text-center font-semibold text-lg mb-4 mt-6">Recent work</h2>
 
         <Masonry
           breakpointCols={breakpointColumnsObj}
-          className="flex gap-6"
+          className="flex gap-6 pl-10 sm:pl-16"
           columnClassName="space-y-6"
         >
           {images.map((img, i) => (
