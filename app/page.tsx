@@ -7,6 +7,7 @@ import Lightbox from "yet-another-react-lightbox";
 import Zoom from "yet-another-react-lightbox/plugins/zoom";
 import "yet-another-react-lightbox/styles.css";
 import ThemeSwitcher from "@/components/ThemeSwitcher";
+import PageContainer from "@/components/PageContainer";
 
 const images = [
   { src: "/images/Andelsbolig.jpg", alt: "Andelsbolig" },
@@ -29,37 +30,39 @@ export default function Home() {
   };
 
   return (
-    <main className="relative px-6 md:px-12 lg:px-20">
+    <main className="relative">
       {/* Light/Dark toggle */}
       <div className="fixed left-2 top-1/2 transform -translate-y-1/2 z-40">
         <ThemeSwitcher />
       </div>
 
-      <h2 className="text-center font-semibold text-lg mb-8 mt-6">Recent work</h2>
+      <PageContainer>
+        <h2 className="text-center font-semibold text-lg mb-8 mt-6">Recent work</h2>
 
-      <Masonry
-        breakpointCols={breakpointColumnsObj}
-        className="flex gap-6"
-        columnClassName="space-y-6"
-      >
-        {images.map((img, i) => (
-          <div
-            key={i}
-            onClick={() => setIndex(i)}
-            className="relative w-full cursor-zoom-in overflow-hidden rounded-xl shadow-md hover:scale-[1.01] transition-transform"
-          >
-            <Image
-              src={img.src}
-              alt={img.alt}
-              width={1000}
-              height={1000}
-              className="w-full h-auto rounded-xl object-cover"
-              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-              priority={i === 0}
-            />
-          </div>
-        ))}
-      </Masonry>
+        <Masonry
+          breakpointCols={breakpointColumnsObj}
+          className="flex gap-6"
+          columnClassName="space-y-6"
+        >
+          {images.map((img, i) => (
+            <div
+              key={i}
+              onClick={() => setIndex(i)}
+              className="relative w-full cursor-zoom-in overflow-hidden rounded-xl shadow-md hover:scale-[1.01] transition-transform"
+            >
+              <Image
+                src={img.src}
+                alt={img.alt}
+                width={1000}
+                height={1000}
+                className="w-full h-auto rounded-xl object-cover"
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                priority={i === 0}
+              />
+            </div>
+          ))}
+        </Masonry>
+      </PageContainer>
 
       <Lightbox
         open={index >= 0}
