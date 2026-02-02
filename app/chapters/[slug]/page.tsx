@@ -28,12 +28,14 @@ const albums = [
     ],
   },
   {
-    slug: "morocco",
-    title: "Morocco",
+    slug: "people",
+    title: "People",
     images: [
-      "/images/monstera2.jpg",
-      "/images/track-field.jpg",
-      // more images
+      "/images/people/Astrid2.jpg",
+      "/images/people/Astrid3.jpg",
+      "/images/people/Ugne1.jpg",
+      "/images/people/Ugne2.jpg",
+      // add more images for People album here
     ],
   },
 ];

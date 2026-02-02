@@ -6,7 +6,7 @@ import ThemeSwitcher from "@/components/ThemeSwitcher";
 const chapters = [
   { title: "Andelsbolig", slug: "andelsbolig", cover: "/images/andelsbolig/Andelsbolig.jpg" },
   { title: "Copenhagen", slug: "copenhagen", cover: "/images/copenhagen/building.jpg" },
-  { title: "Metro", slug: "metro", cover: "/images/metro/metro.jpg" },
+  { title: "People", slug: "people", cover: "/images/people/Ugne1.jpg" },
 ];
 
 export default function ChaptersPage() {
