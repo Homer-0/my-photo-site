@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import Link from 'next/link';
 
 export default function Navbar() {
@@ -8,7 +9,15 @@ export default function Navbar() {
   <nav className="max-w-7xl mx-auto px-6 py-8 flex items-center justify-between">
         {/* Left: Name */}
         <div className="text-lg font-bold tracking-tight">
-          <Link href="/"><span>MANOS TZAVIDAS.</span></Link>
+          <Link href="/">
+            <Image
+              src="/logo.png"
+              alt="Manos Tzavidas logo"
+              width={160}
+              height={32}
+              priority
+            />
+          </Link>
         </div>
 
         {/* Center: Navigation Links */}

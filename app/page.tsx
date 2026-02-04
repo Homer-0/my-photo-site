@@ -6,9 +6,7 @@ import Masonry from "react-masonry-css";
 import Lightbox from "yet-another-react-lightbox";
 import Zoom from "yet-another-react-lightbox/plugins/zoom";
 import "yet-another-react-lightbox/styles.css";
-import ThemeSwitcher from "@/components/ThemeSwitcher";
 import PageContainer from "@/components/PageContainer";
-import Link from "next/link";
 
 const images = [
   { src: "/images/Andelsbolig.jpg", alt: "Andelsbolig" },
@@ -32,10 +30,6 @@ export default function Home() {
 
   return (
     <main className="relative">
-      <div className="fixed left-2 top-1/2 transform -translate-y-1/2 z-40 hidden sm:block">
-  <ThemeSwitcher />
-</div>
-
       <PageContainer>
         <h2 className="text-center font-semibold text-lg mb-4 mt-4">Recent work</h2>
 
