@@ -19,7 +19,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" suppressHydrationWarning>
       <body>
         <Providers>
-          <header className="sticky top-0 z-50 bg-white dark:bg-black px-6 py-6 relative overflow-hidden">
+          <header className="sticky top-0 z-50 bg-white dark:bg-black px-4 py-3 sm:px-6 sm:py-6 relative overflow-hidden">
             <div className="absolute inset-x-0 bottom-0 h-px bg-gray-200 dark:bg-gray-800 z-20" />
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-center gap-4 sm:gap-0">
               {/* Name on the left (desktop), top (mobile) */}
@@ -37,7 +37,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               </div>
 
               {/* Nav centered always */}
-              <nav className="flex flex-wrap justify-center gap-6 sm:gap-12 text-xl font-medium items-center">
+              <nav className="flex flex-wrap justify-center gap-4 sm:gap-12 text-base sm:text-xl font-medium items-center">
                 <Link href="/">Home</Link>
                 <Link href="/chapters">Chapters</Link>
                 <Link href="/journal">Journal</Link>
