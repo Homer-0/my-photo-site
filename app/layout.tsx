@@ -19,27 +19,27 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" suppressHydrationWarning>
       <body>
         <Providers>
-          <header className="sticky top-0 z-50 bg-white dark:bg-black px-3 py-1.5 sm:px-6 sm:py-6 relative overflow-hidden">
+          <header className="sticky top-0 z-50 bg-white dark:bg-black px-4 py-1 sm:px-6 sm:py-6 relative overflow-hidden">
             <div className="absolute inset-x-0 bottom-0 h-px bg-gray-200 dark:bg-gray-800 z-20" />
             <div className="sm:hidden">
-              <div className="flex items-start justify-between">
+              <div className="flex justify-center">
                 <Link href="/" className="relative inline-flex z-10">
                   <Image
                     src="/logo.png"
                     alt="Manos Tzavidas logo"
                     width={100}
                     height={50}
-                    className="w-[74px] h-auto -translate-y-[1px] dark:invert"
+                    className="w-[66px] h-auto -translate-y-[1px] dark:invert"
                     priority
                   />
                 </Link>
-                <ThemeSwitcher orientation="horizontal" />
               </div>
-              <nav className="mt-1 flex flex-nowrap items-center gap-4 text-sm font-medium">
-                <Link href="/">Home</Link>
-                <Link href="/chapters">Chapters</Link>
-                <Link href="/journal">Journal</Link>
-                <Link href="/about">About</Link>
+              <nav className="mt-0.5 flex flex-nowrap items-center justify-center gap-3 text-sm font-medium">
+                <Link href="/" className="whitespace-nowrap">Home</Link>
+                <Link href="/chapters" className="whitespace-nowrap">Chapters</Link>
+                <Link href="/journal" className="whitespace-nowrap">Journal</Link>
+                <Link href="/about" className="whitespace-nowrap">About</Link>
+                <ThemeSwitcher orientation="horizontal" />
               </nav>
             </div>
 
