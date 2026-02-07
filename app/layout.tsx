@@ -10,9 +10,9 @@ export const metadata: Metadata = {
   title: "Manos Tzavidas – Photography",
   description: "Photography portfolio by Manos Tzavidas",
   icons: {
-    icon: [{ url: "/logo.png", type: "image/png" }],
-    shortcut: [{ url: "/logo.png", type: "image/png" }],
-    apple: [{ url: "/logo.png", type: "image/png" }],
+    icon: [{ url: "/mt-tab-icon.png", type: "image/png" }],
+    shortcut: [{ url: "/mt-tab-icon.png", type: "image/png" }],
+    apple: [{ url: "/mt-tab-icon.png", type: "image/png" }],
   },
 };
 
