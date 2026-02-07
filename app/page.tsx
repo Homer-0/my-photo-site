@@ -19,15 +19,15 @@ export default function Home() {
   };
 
   return (
-    <main className="relative">
+    <main className="relative max-w-[1600px] mx-auto">
       <PageContainer>
         <h2 className="text-center font-semibold text-lg mb-4 mt-4">Recent work</h2>
 
         <Masonry
-  breakpointCols={breakpointColumnsObj}
-  className="flex gap-2 px-4 sm:px-10"
-  columnClassName="space-y-2"
->
+          breakpointCols={breakpointColumnsObj}
+          className="flex gap-1 px-0 sm:px-1"
+          columnClassName="space-y-1"
+        >
           {photos.map((img, i) => (
             <div
               key={img.src}

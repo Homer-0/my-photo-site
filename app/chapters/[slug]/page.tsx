@@ -26,12 +26,12 @@ export default function AlbumPage() {
   }
 
   return (
-    <main className="relative px-2 md:px-6 lg:px-10 pt-4 pb-10 max-w-[1600px] mx-auto">
-      <h1 className="text-2xl font-semibold mb-4 text-center">{album.title}</h1>
+    <main className="relative px-0 sm:px-2 pt-3 pb-8 max-w-[1600px] mx-auto">
+      <h1 className="text-2xl font-semibold mb-3 text-center">{album.title}</h1>
       <Masonry
         breakpointCols={breakpointColumnsObj}
-        className="flex gap-2"
-        columnClassName="space-y-2"
+        className="flex gap-1"
+        columnClassName="space-y-1"
       >
         {album.images.map((image, i) => (
           <div

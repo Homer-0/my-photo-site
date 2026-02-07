@@ -25,17 +25,17 @@
     ]
   },
   {
-    "slug": "people",
-    "title": "People",
-    "cover": "/images/people/ugneshooting1.jpg",
+    "slug": "presence",
+    "title": "Presence",
+    "cover": "/images/presence/ugneshooting1.jpg",
     "images": [
-      { "src": "/images/people/Astrid2.jpg", "orientation": "portrait" },
-      { "src": "/images/people/boy1indo.jpg", "orientation": "landscape" },
-      { "src": "/images/people/Ugne2.jpg", "orientation": "portrait" },
-      { "src": "/images/people/vietnamgirl.jpg", "orientation": "portrait" },
-      { "src": "/images/people/ugneshooting1.jpg", "orientation": "portrait" },
-      { "src": "/images/people/philiastrid.jpg", "orientation": "landscape" },
-      { "src": "/images/people/Astrid3.jpg", "orientation": "landscape" }
+      { "src": "/images/presence/Astrid2.jpg", "orientation": "portrait" },
+      { "src": "/images/presence/boy1indo.jpg", "orientation": "landscape" },
+      { "src": "/images/presence/Ugne2.jpg", "orientation": "portrait" },
+      { "src": "/images/presence/vietnamgirl.jpg", "orientation": "portrait" },
+      { "src": "/images/presence/ugneshooting1.jpg", "orientation": "portrait" },
+      { "src": "/images/presence/philiastrid.jpg", "orientation": "landscape" },
+      { "src": "/images/presence/Astrid3.jpg", "orientation": "landscape" }
       
     ]
   }
