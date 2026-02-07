@@ -6,9 +6,9 @@
     "cover": "/images/andelsbolig/windows.jpg",
     "images": [
       { "src": "/images/andelsbolig/basement.jpg", "orientation": "landscape" },
-      { "src": "/images/andelsbolig/Andelsbolig.jpg", "orientation": "portrait" },
+      { "src": "/images/andelsbolig/stairsandel.jpg", "orientation": "portrait" },
       { "src": "/images/andelsbolig/windows.jpg", "orientation": "landscape" },
-      { "src": "/images/andelsbolig/Home.jpg", "orientation": "portrait" },
+      { "src": "/images/andelsbolig/no4.jpg", "orientation": "portrait" },
       { "src": "/images/andelsbolig/monstera.jpg", "orientation": "landscape" },
       { "src": "/images/andelsbolig/monstera2.jpg", "orientation": "portrait" }
     ]
@@ -21,8 +21,10 @@
       { "src": "/images/copenhagen/cactus.jpg", "orientation": "landscape" },
       { "src": "/images/copenhagen/cactus2.jpg", "orientation": "portrait" },
       { "src": "/images/copenhagen/curvy.jpg", "orientation": "portrait" },
+      { "src": "/images/copenhagen/sea.jpg", "orientation": "landscape" },
       { "src": "/images/copenhagen/windowsblinders.jpg", "orientation": "landscape" },
-      { "src": "/images/copenhagen/stairs.jpg", "orientation": "landscape" }
+      { "src": "/images/copenhagen/stairs.jpg", "orientation": "landscape" },
+      { "src": "/images/copenhagen/elephant.jpg", "orientation": "landscape" }
     ]
   },
   {
