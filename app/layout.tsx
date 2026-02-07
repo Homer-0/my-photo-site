@@ -1,13 +1,19 @@
 import "./globals.css";
 import Image from "next/image";
 import Link from "next/link";
+import type { Metadata } from "next";
 import { Providers } from "./providers";
 import ThemeSwitcher from "@/components/ThemeSwitcher";
 import { Analytics } from "@vercel/analytics/next";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Manos Tzavidas – Photography",
   description: "Photography portfolio by Manos Tzavidas",
+  icons: {
+    icon: [{ url: "/logo.png", type: "image/png" }],
+    shortcut: [{ url: "/logo.png", type: "image/png" }],
+    apple: [{ url: "/logo.png", type: "image/png" }],
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
