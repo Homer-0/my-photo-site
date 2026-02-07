@@ -9,6 +9,9 @@ import { Analytics } from "@vercel/analytics/next";
 export const metadata: Metadata = {
   title: "Manos Tzavidas – Photography",
   description: "Photography portfolio by Manos Tzavidas",
+  icons: {
+    icon: "/favicon.png",
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
