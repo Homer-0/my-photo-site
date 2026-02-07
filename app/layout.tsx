@@ -19,33 +19,52 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" suppressHydrationWarning>
       <body>
         <Providers>
-          <header className="sticky top-0 z-50 bg-white dark:bg-black px-4 py-2 sm:px-6 sm:py-6 relative overflow-hidden">
+          <header className="sticky top-0 z-50 bg-white dark:bg-black px-3 py-1.5 sm:px-6 sm:py-6 relative overflow-hidden">
             <div className="absolute inset-x-0 bottom-0 h-px bg-gray-200 dark:bg-gray-800 z-20" />
-            <div className="relative min-h-[68px] sm:min-h-0 flex flex-col sm:flex-row sm:items-center sm:justify-center sm:gap-0">
-              {/* Name on the left (desktop), top (mobile) */}
-              <div className="absolute left-0 top-0 sm:w-auto sm:absolute sm:left-10 sm:top-auto flex justify-start sm:justify-start">
+            <div className="sm:hidden">
+              <div className="flex items-start justify-between">
                 <Link href="/" className="relative inline-flex z-10">
                   <Image
                     src="/logo.png"
                     alt="Manos Tzavidas logo"
                     width={100}
                     height={50}
-                    className="w-[82px] h-auto sm:w-[100px] -translate-y-[1px] dark:invert"
+                    className="w-[74px] h-auto -translate-y-[1px] dark:invert"
+                    priority
+                  />
+                </Link>
+                <ThemeSwitcher orientation="horizontal" />
+              </div>
+              <nav className="mt-1 flex flex-nowrap items-center gap-4 text-sm font-medium">
+                <Link href="/">Home</Link>
+                <Link href="/chapters">Chapters</Link>
+                <Link href="/journal">Journal</Link>
+                <Link href="/about">About</Link>
+              </nav>
+            </div>
+
+            <div className="hidden sm:flex relative sm:items-center sm:justify-center sm:gap-0">
+              <div className="sm:w-auto sm:absolute sm:left-10 flex sm:justify-start">
+                <Link href="/" className="relative inline-flex z-10">
+                  <Image
+                    src="/logo.png"
+                    alt="Manos Tzavidas logo"
+                    width={100}
+                    height={50}
+                    className="-translate-y-[1px] dark:invert"
                     priority
                   />
                 </Link>
               </div>
 
-              {/* Nav centered always */}
-              <nav className="w-full pt-8 sm:pt-0 flex flex-nowrap sm:flex-wrap justify-start sm:justify-center gap-3 sm:gap-12 text-sm sm:text-xl font-medium items-center">
+              <nav className="flex flex-wrap justify-center gap-12 text-xl font-medium items-center">
                 <Link href="/">Home</Link>
                 <Link href="/chapters">Chapters</Link>
                 <Link href="/journal">Journal</Link>
                 <Link href="/about">About</Link>
               </nav>
 
-              {/* Theme switcher on the right */}
-              <div className="absolute right-0 top-0 sm:w-auto sm:absolute sm:right-6 sm:top-auto flex justify-end sm:justify-end">
+              <div className="sm:w-auto sm:absolute sm:right-6 flex sm:justify-end">
                 <ThemeSwitcher orientation="horizontal" />
               </div>
             </div>
