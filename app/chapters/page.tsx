@@ -1,17 +1,12 @@
 "use client";
 
 import Link from "next/link";
-
-const chapters = [
-  { title: "Andelsbolig", slug: "andelsbolig", cover: "/images/andelsbolig/Andelsbolig.jpg" },
-  { title: "Copenhagen", slug: "copenhagen", cover: "/images/copenhagen/building.jpg" },
-  { title: "People", slug: "people", cover: "/images/people/Ugne1.jpg" },
-];
+import chapters from "@/data/chapters.json";
 
 export default function ChaptersPage() {
   return (
     <main className="relative px-2 sm:px-4 lg:px-2 max-w-[1600px] mx-auto">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 py-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 py-10">
           {chapters.map((chapter) => (
             <Link
               key={chapter.slug}

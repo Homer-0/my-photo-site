@@ -7,48 +7,18 @@ import Zoom from "yet-another-react-lightbox/plugins/zoom";
 import "yet-another-react-lightbox/styles.css";
 import Image from "next/image";
 import Masonry from "react-masonry-css";
-
-const albums = [
-  {
-    slug: "andelsbolig",
-    title: "Andelsbolig",
-    images: [
-      "/images/Andelsbolig.jpg",
-      // add more images for this album here
-    ],
-  },
-  {
-    slug: "copenhagen",
-    title: "Copenhagen",
-    images: [
-      "/images/building.jpg",
-      "/images/metro.jpg",
-      // more images
-    ],
-  },
-  {
-    slug: "people",
-    title: "People",
-    images: [
-      "/images/people/Astrid2.jpg",
-      "/images/people/Astrid3.jpg",
-      "/images/people/Ugne1.jpg",
-      "/images/people/Ugne2.jpg",
-      // add more images for People album here
-    ],
-  },
-];
+import chapters from "@/data/chapters.json";
 
 export default function AlbumPage() {
   const { slug } = useParams();
-  const album = albums.find((a) => a.slug === slug);
+  const album = chapters.find((a) => a.slug === slug);
 
   const [index, setIndex] = useState(-1);
 
   const breakpointColumnsObj = {
     default: 3,
-    1024: 2,
-    640: 1,
+    1280: 2,
+    768: 1,
   };
 
   if (!album) {
@@ -60,21 +30,20 @@ export default function AlbumPage() {
       <h1 className="text-2xl font-semibold mb-4 text-center">{album.title}</h1>
       <Masonry
         breakpointCols={breakpointColumnsObj}
-        className="flex gap-6"
-        columnClassName="space-y-6"
+        className="flex gap-2"
+        columnClassName="space-y-2"
       >
-        {album.images.map((src, i) => (
+        {album.images.map((image, i) => (
           <div
-            key={i}
+            key={image.src}
             onClick={() => setIndex(i)}
-            className="relative w-full cursor-zoom-in overflow-hidden shadow-md hover:scale-[1.01] transition-transform"
+            className={`relative w-full ${image.orientation === "landscape" ? "aspect-[5/4]" : "aspect-[4/5]"} cursor-zoom-in overflow-hidden shadow-md hover:scale-[1.01] transition-transform`}
           >
             <Image
-              src={src}
+              src={image.src}
               alt={`${album.title} photo ${i + 1}`}
-              width={1000}
-              height={1000}
-              className="w-full h-auto object-cover"
+              fill
+              className="object-cover"
               sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
               priority={i === 0}
             />
@@ -86,7 +55,7 @@ export default function AlbumPage() {
         open={index >= 0}
         close={() => setIndex(-1)}
         index={index}
-        slides={album.images.map((src) => ({ src }))}
+        slides={album.images.map(({ src }) => ({ src }))}
         plugins={[Zoom]}
         zoom={{ maxZoomPixelRatio: 2 }}
         styles={{ container: { backgroundColor: "rgba(255,255,255,0.95)" } }}

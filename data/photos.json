@@ -1,0 +1,18 @@
+[
+  { "src": "/images/Recent/cactus.jpg", "alt": "Cactus", "orientation": "landscape" },
+  { "src": "/images/Recent/indonesiaboy.jpg", "alt": "boy", "orientation": "landscape" },
+  { "src": "/images/Recent/curvy.jpg", "alt": "Curvy", "orientation": "portrait" },
+  { "src": "/images/Recent/vietnamgirl.jpg", "alt": "vietnamgirl", "orientation": "landscape" },
+  { "src": "/images/Recent/stairs.jpg", "alt": "Stairs", "orientation": "landscape" },
+  { "src": "/images/Recent/windows.jpg", "alt": "Windows", "orientation": "landscape" },
+  { "src": "/images/Recent/astridphilipin.jpg", "alt": "astridphilipin", "orientation": "landscape" },
+  { "src": "/images/Recent/ugne1.jpg", "alt": "Ugne1", "orientation": "portrait" },
+  { "src": "/images/Recent/track-field.jpg", "alt": "Track & Field", "orientation": "portrait" },
+  { "src": "/images/Recent/Andelsbolig.jpg", "alt": "Andelsbolig", "orientation": "portrait" },
+  { "src": "/images/Recent/Home.jpg", "alt": "Mølle Allé", "orientation": "portrait" },
+  { "src": "/images/Recent/Lake.jpg", "alt": "Lake", "orientation": "landscape" },
+  { "src": "/images/Recent/metro.jpg", "alt": "Metro", "orientation": "portrait" },
+  { "src": "/images/Recent/monstera.jpg", "alt": "Monstera", "orientation": "landscape" },
+  { "src": "/images/Recent/monstera2.jpg", "alt": "Monstera 2", "orientation": "portrait" },
+  { "src": "/images/Recent/building.jpg", "alt": "Building", "orientation": "portrait" }
+]

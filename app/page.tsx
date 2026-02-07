@@ -7,25 +7,15 @@ import Lightbox from "yet-another-react-lightbox";
 import Zoom from "yet-another-react-lightbox/plugins/zoom";
 import "yet-another-react-lightbox/styles.css";
 import PageContainer from "@/components/PageContainer";
-
-const images = [
-  { src: "/images/Andelsbolig.jpg", alt: "Andelsbolig" },
-  { src: "/images/track-field.jpg", alt: "Track & Field" },
-  { src: "/images/Home.jpg", alt: "Mølle Allé" },
-  { src: "/images/Lake.jpg", alt: "Lake" },
-  { src: "/images/metro.jpg", alt: "Metro" },
-  { src: "/images/monstera.jpg", alt: "Monstera" },
-  { src: "/images/monstera2.jpg", alt: "Monstera 2" },
-  { src: "/images/building.jpg", alt: "Building" },
-];
+import photos from "@/data/photos.json";
 
 export default function Home() {
   const [index, setIndex] = useState(-1);
 
   const breakpointColumnsObj = {
     default: 3,
-    1024: 2,
-    640: 1,
+    1280: 2,
+    768: 1,
   };
 
   return (
@@ -35,21 +25,20 @@ export default function Home() {
 
         <Masonry
   breakpointCols={breakpointColumnsObj}
-  className="flex gap-6 px-4 sm:px-10"
-  columnClassName="space-y-6"
+  className="flex gap-2 px-4 sm:px-10"
+  columnClassName="space-y-2"
 >
-          {images.map((img, i) => (
+          {photos.map((img, i) => (
             <div
-              key={i}
+              key={img.src}
               onClick={() => setIndex(i)}
-              className="relative w-full cursor-zoom-in overflow-hidden shadow-md hover:scale-[1.01] transition-transform"
+              className={`relative w-full ${img.orientation === "landscape" ? "aspect-[5/4]" : "aspect-[4/5]"} cursor-zoom-in overflow-hidden shadow-md hover:scale-[1.01] transition-transform`}
             >
               <Image
                 src={img.src}
                 alt={img.alt}
-                width={1000}
-                height={1000}
-                className="w-full h-auto object-cover"
+                fill
+                className="object-cover"
                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 priority={i === 0}
               />
@@ -62,7 +51,7 @@ export default function Home() {
         open={index >= 0}
         close={() => setIndex(-1)}
         index={index}
-        slides={images.map(({ src, alt }) => ({ src, description: alt }))}
+        slides={photos.map(({ src, alt }) => ({ src, description: alt }))}
         plugins={[Zoom]}
         styles={{
           container: { backgroundColor: "rgba(255,255,255,0.95)" },
