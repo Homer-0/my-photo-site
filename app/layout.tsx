@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Providers } from "./providers";
 import ThemeSwitcher from "@/components/ThemeSwitcher";
+import { Analytics } from "@vercel/analytics/next";
 
 export const metadata = {
   title: "Manos Tzavidas – Photography",
@@ -47,6 +48,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           </header>
           <main>{children}</main>
         </Providers>
+        <Analytics />
       </body>
     </html>
   );
