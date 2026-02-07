@@ -2,6 +2,7 @@
   {
     "slug": "andelsbolig",
     "title": "Andelsbolig",
+    "subtitle": "A long-term photographic project.",
     "cover": "/images/andelsbolig/windows.jpg",
     "images": [
       { "src": "/images/andelsbolig/basement.jpg", "orientation": "landscape" },
@@ -27,6 +28,7 @@
   {
     "slug": "presence",
     "title": "Presence",
+    "subtitle": "Observations of people, posed and unposed.",
     "cover": "/images/presence/ugneshooting1.jpg",
     "images": [
       { "src": "/images/presence/Astrid2.jpg", "orientation": "portrait" },

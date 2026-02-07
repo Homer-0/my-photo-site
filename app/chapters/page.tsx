@@ -11,17 +11,17 @@ export default function ChaptersPage() {
             <Link
               key={chapter.slug}
               href={`/chapters/${chapter.slug}`}
-              className="relative group overflow-hidden shadow-lg aspect-square"
+              className="group block"
             >
-              <div className="relative w-full h-full">
+              <h2 className="text-center text-xl font-medium mb-2 text-black dark:text-white">
+                {chapter.title}
+              </h2>
+              <div className="relative w-full aspect-square overflow-hidden shadow-lg">
                 <img
                   src={chapter.cover}
                   alt={chapter.title}
                   className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                 />
-                <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center text-white text-xl font-semibold">
-                  {chapter.title}
-                </div>
               </div>
             </Link>
           ))}

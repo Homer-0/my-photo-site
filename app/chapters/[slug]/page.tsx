@@ -22,12 +22,15 @@ export default function AlbumPage() {
   };
 
   if (!album) {
-    return <div className="text-center p-10">Album not found</div>;
+    return <div className="text-center p-10 text-black dark:text-white">Album not found</div>;
   }
 
   return (
     <main className="relative px-0 sm:px-2 pt-3 pb-8 max-w-[1600px] mx-auto">
-      <h1 className="text-2xl font-semibold mb-3 text-center">{album.title}</h1>
+      <h1 className="text-2xl font-semibold mb-1 text-center text-black dark:text-white">{album.title}</h1>
+      {album.subtitle ? (
+        <p className="text-sm text-gray-600 dark:text-gray-300 mb-3 text-center">{album.subtitle}</p>
+      ) : null}
       <Masonry
         breakpointCols={breakpointColumnsObj}
         className="flex gap-1"
