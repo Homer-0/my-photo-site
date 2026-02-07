@@ -19,11 +19,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" suppressHydrationWarning>
       <body>
         <Providers>
-          <header className="sticky top-0 z-50 bg-white dark:bg-black px-4 py-3 sm:px-6 sm:py-6 relative overflow-hidden">
+          <header className="sticky top-0 z-50 bg-white dark:bg-black px-4 py-2 sm:px-6 sm:py-6 relative overflow-hidden">
             <div className="absolute inset-x-0 bottom-0 h-px bg-gray-200 dark:bg-gray-800 z-20" />
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-center gap-4 sm:gap-0">
+            <div className="relative min-h-[72px] sm:min-h-0 flex flex-col sm:flex-row sm:items-center sm:justify-center sm:gap-0">
               {/* Name on the left (desktop), top (mobile) */}
-              <div className="w-full sm:w-auto sm:absolute sm:left-10 flex justify-center sm:justify-start">
+              <div className="absolute left-0 top-0 sm:w-auto sm:absolute sm:left-10 sm:top-auto flex justify-start sm:justify-start">
                 <Link href="/" className="relative inline-flex z-10">
                   <Image
                     src="/logo.png"
@@ -37,7 +37,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               </div>
 
               {/* Nav centered always */}
-              <nav className="flex flex-wrap justify-center gap-4 sm:gap-12 text-base sm:text-xl font-medium items-center">
+              <nav className="pt-9 sm:pt-0 flex flex-wrap justify-center gap-4 sm:gap-12 text-base sm:text-xl font-medium items-center">
                 <Link href="/">Home</Link>
                 <Link href="/chapters">Chapters</Link>
                 <Link href="/journal">Journal</Link>
@@ -45,7 +45,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               </nav>
 
               {/* Theme switcher on the right */}
-              <div className="w-full sm:w-auto sm:absolute sm:right-6 flex justify-center sm:justify-end">
+              <div className="absolute right-0 top-0 sm:w-auto sm:absolute sm:right-6 sm:top-auto flex justify-end sm:justify-end">
                 <ThemeSwitcher orientation="horizontal" />
               </div>
             </div>

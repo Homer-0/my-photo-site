@@ -25,8 +25,8 @@ export default function Home() {
 
         <Masonry
           breakpointCols={breakpointColumnsObj}
-          className="flex gap-1 px-0 sm:px-1"
-          columnClassName="space-y-1"
+          className="flex gap-2 px-0 sm:px-1"
+          columnClassName="space-y-2"
         >
           {photos.map((img, i) => (
             <div

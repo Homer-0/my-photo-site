@@ -33,8 +33,8 @@ export default function AlbumPage() {
       ) : null}
       <Masonry
         breakpointCols={breakpointColumnsObj}
-        className="flex gap-1"
-        columnClassName="space-y-1"
+        className="flex gap-2"
+        columnClassName="space-y-2"
       >
         {album.images.map((image, i) => (
           <div

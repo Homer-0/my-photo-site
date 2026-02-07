@@ -6,7 +6,7 @@ import chapters from "@/data/chapters.json";
 export default function ChaptersPage() {
   return (
     <main className="relative px-0 sm:px-2 max-w-[1600px] mx-auto">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-1 py-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 py-6">
           {chapters.map((chapter) => (
             <Link
               key={chapter.slug}
