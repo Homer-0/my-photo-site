@@ -20,14 +20,14 @@
       { "src": "/images/copenhagen/cactus.jpg", "orientation": "landscape" },
       { "src": "/images/copenhagen/cactus2.jpg", "orientation": "portrait" },
       { "src": "/images/copenhagen/curvy.jpg", "orientation": "portrait" },
-      { "src": "/images/copenhagen/windowsblinders.jpg", "orientation": "landscape" }
+      { "src": "/images/copenhagen/windowsblinders.jpg", "orientation": "landscape" },
       { "src": "/images/copenhagen/stairs.jpg", "orientation": "landscape" }
     ]
   },
   {
     "slug": "people",
     "title": "People",
-    "cover": "/images/people/Ugne1.jpg",
+    "cover": "/images/people/ugneshooting1.jpg",
     "images": [
       { "src": "/images/people/Astrid2.jpg", "orientation": "portrait" },
       { "src": "/images/people/boy1indo.jpg", "orientation": "landscape" },
