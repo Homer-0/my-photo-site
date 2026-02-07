@@ -13,5 +13,6 @@
   { "src": "/images/Recent/metro.jpg", "alt": "Metro", "orientation": "portrait" },
   { "src": "/images/Recent/monstera.jpg", "alt": "Monstera", "orientation": "landscape" },
   { "src": "/images/Recent/monstera2.jpg", "alt": "Monstera 2", "orientation": "portrait" },
+  { "src": "/images/Recent/indonesiaboy.jpg", "alt": "boy", "orientation": "landscape" },
   { "src": "/images/Recent/building.jpg", "alt": "Building", "orientation": "portrait" }
 ]
