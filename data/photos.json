@@ -10,7 +10,7 @@
   { "src": "/images/Recent/astrid2.jpg", "alt": "astrid", "orientation": "portrait" },
   { "src": "/images/Recent/track-field.jpg", "alt": "Track & Field", "orientation": "portrait" },
   { "src": "/images/Recent/stairsandel.jpg", "alt": "stairsandel", "orientation": "portrait" },
-  { "src": "/images/Recent/windowsblinders.jpg", "alt": "windows blinders", "orientation": "portrait" },
+  { "src": "/images/Recent/windowsblinders.jpg", "alt": "windows blinders", "orientation": "landscape" },
   { "src": "/images/Recent/Lake.jpg", "alt": "Lake", "orientation": "landscape" },
   { "src": "/images/Recent/metro.jpg", "alt": "Metro", "orientation": "portrait" },
   { "src": "/images/Recent/no4.jpg", "alt": "Mølle Allé", "orientation": "portrait" },
