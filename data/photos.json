@@ -9,10 +9,10 @@
   { "src": "/images/Recent/philiastrid.jpg", "alt": "philiastrid", "orientation": "landscape" },
   { "src": "/images/Recent/track-field.jpg", "alt": "Track & Field", "orientation": "portrait" },
   { "src": "/images/Recent/stairsandel.jpg", "alt": "stairsandel", "orientation": "portrait" },
-  { "src": "/images/Recent/no4.jpg", "alt": "Mølle Allé", "orientation": "portrait" },
+  { "src": "/images/Recent/windowsblinders.jpg", "alt": "windows blinders", "orientation": "portrait" },
   { "src": "/images/Recent/Lake.jpg", "alt": "Lake", "orientation": "landscape" },
   { "src": "/images/Recent/metro.jpg", "alt": "Metro", "orientation": "portrait" },
+  { "src": "/images/Recent/no4.jpg", "alt": "Mølle Allé", "orientation": "portrait" },
   { "src": "/images/Recent/monstera.jpg", "alt": "Monstera", "orientation": "landscape" },
-  { "src": "/images/Recent/monstera2.jpg", "alt": "Monstera 2", "orientation": "portrait" },
   { "src": "/images/Recent/building.jpg", "alt": "Building", "orientation": "portrait" }
 ]
