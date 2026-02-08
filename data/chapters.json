@@ -16,6 +16,7 @@
   {
     "slug": "copenhagen",
     "title": "Copenhagen",
+    "subtitle": "The city, in form.",
     "cover": "/images/copenhagen/cactus.jpg",
     "images": [
       { "src": "/images/copenhagen/cactus.jpg", "orientation": "landscape" },

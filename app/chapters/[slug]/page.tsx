@@ -29,7 +29,7 @@ export default function AlbumPage() {
     <main className="relative px-2 sm:px-3 pt-3 pb-8 max-w-[1600px] mx-auto">
       <h1 className="text-2xl font-semibold mb-1 text-center text-black dark:text-white">{album.title}</h1>
       {album.subtitle ? (
-        <p className="text-sm text-gray-600 dark:text-gray-300 mb-3 text-center">{album.subtitle}</p>
+        <p className="text-base text-gray-600 dark:text-gray-300 mb-3 text-center">{album.subtitle}</p>
       ) : null}
       <Masonry
         breakpointCols={breakpointColumnsObj}
