@@ -3,6 +3,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { Providers } from "./providers";
 import ThemeSwitcher from "@/components/ThemeSwitcher";
+import NavLinks from "@/components/NavLinks";
 import { Analytics } from "@vercel/analytics/next";
 
 export const metadata: Metadata = {
@@ -37,11 +38,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               </Link>
               <div className="flex items-center gap-5">
                 <nav className="flex items-center gap-5">
-                  {["Home", "Chapters", "Journal", "About"].map((label) => (
-                    <Link key={label} href={label === "Home" ? "/" : `/${label.toLowerCase()}`} className="label">
-                      {label}
-                    </Link>
-                  ))}
+                  <NavLinks />
                 </nav>
                 <ThemeSwitcher />
               </div>
@@ -63,15 +60,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 Manos Tzavidas
               </Link>
               <nav className="flex items-center gap-10">
-                {["Home", "Chapters", "Journal", "About"].map((label) => (
-                  <Link
-                    key={label}
-                    href={label === "Home" ? "/" : `/${label.toLowerCase()}`}
-                    className="label transition-opacity hover:opacity-60"
-                  >
-                    {label}
-                  </Link>
-                ))}
+                <NavLinks />
               </nav>
               <ThemeSwitcher />
             </div>

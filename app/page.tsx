@@ -69,9 +69,9 @@ export default function Home() {
         ref={stripRef}
         className="flex overflow-x-auto items-center"
         style={{
-          height: "calc(100dvh - 5rem)",
+          height: "calc(100dvh - 8rem)",
           gap: 0,
-          paddingTop: "3.5rem",
+          paddingTop: "0",
           scrollbarWidth: "none",
           msOverflowStyle: "none",
         }}
@@ -98,11 +98,6 @@ export default function Home() {
             />
           );
         })}
-      </div>
-
-      {/* Footer label */}
-      <div className="px-10 pt-5 pb-10 flex justify-end">
-        <span className="label">Recent Work</span>
       </div>
 
       {/* Lightbox — uses Next.js Image optimised src */}

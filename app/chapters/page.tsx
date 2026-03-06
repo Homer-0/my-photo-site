@@ -34,21 +34,48 @@ export default function ChaptersPage() {
         const aspect = isPortrait ? "2/3" : "3/2";
         const mt = override.mt ?? 24;
 
-        if (isLeft) {
-          // Left: image at left edge, caption to its right at vertical center
+        if (i === 0) {
+          // Andelsbolig: image left, caption top-right, close to image
           return (
             <div key={chapter.slug} style={{ marginTop: `${mt}px` }}>
-              <Link href={`/chapters/${chapter.slug}`} className="group flex items-center gap-10">
-                <div className="relative flex-shrink-0" style={{ width: `${w}vw`, aspectRatio: aspect }}>
+              <Link href={`/chapters/${chapter.slug}`} className="group flex items-start gap-5 w-fit pointer-events-none">
+                <div className="relative flex-shrink-0 pointer-events-auto" style={{ width: `${w}vw`, aspectRatio: aspect }}>
                   <Image
                     src={chapter.cover}
                     alt={chapter.title}
                     fill
-                    className="object-cover transition-opacity duration-500 group-hover:opacity-75"
+                    className="object-cover transition-opacity duration-500 group-hover:opacity-80"
                     sizes={`${w}vw`}
                   />
                 </div>
-                <div>
+                <div className="pointer-events-auto" style={{ paddingTop: "0.25rem" }}>
+                  <p style={{ color: "var(--muted)", fontSize: "0.9rem", fontFamily: "'Cormorant Garamond', serif", fontWeight: 400, letterSpacing: "0.25em", textTransform: "uppercase" as const }}>
+                    {chapter.title}
+                  </p>
+                  {chapter.subtitle && (
+                    <p style={{ color: "var(--muted)", fontSize: "0.82rem", fontFamily: "'Geist', sans-serif", fontWeight: 300, marginTop: "0.25rem", opacity: 0.6 }}>
+                      {chapter.subtitle}
+                    </p>
+                  )}
+                </div>
+              </Link>
+            </div>
+          );
+        } else if (isLeft) {
+          // Left: image at left edge, caption to its right at vertical center
+          return (
+            <div key={chapter.slug} style={{ marginTop: `${mt}px` }}>
+              <Link href={`/chapters/${chapter.slug}`} className="group flex items-center gap-5 w-fit pointer-events-none">
+                <div className="relative flex-shrink-0 pointer-events-auto" style={{ width: `${w}vw`, aspectRatio: aspect }}>
+                  <Image
+                    src={chapter.cover}
+                    alt={chapter.title}
+                    fill
+                    className="object-cover transition-opacity duration-500 group-hover:opacity-80"
+                    sizes={`${w}vw`}
+                  />
+                </div>
+                <div className="pointer-events-auto">
                   <p style={{ color: "var(--muted)", fontSize: "0.9rem", fontFamily: "'Cormorant Garamond', serif", fontWeight: 400, letterSpacing: "0.25em", textTransform: "uppercase" as const }}>
                     {chapter.title}
                   </p>
@@ -65,17 +92,17 @@ export default function ChaptersPage() {
           // Right: image + caption stacked vertically, caption below image at its left edge
           return (
             <div key={chapter.slug} style={{ marginTop: `${mt}px`, display: "flex", justifyContent: "flex-end" }}>
-              <Link href={`/chapters/${chapter.slug}`} className="group flex flex-col">
-                <div className="relative" style={{ width: `${w}vw`, aspectRatio: aspect }}>
+              <Link href={`/chapters/${chapter.slug}`} className="group flex flex-col w-fit pointer-events-none">
+                <div className="relative pointer-events-auto" style={{ width: `${w}vw`, aspectRatio: aspect }}>
                   <Image
                     src={chapter.cover}
                     alt={chapter.title}
                     fill
-                    className="object-cover transition-opacity duration-500 group-hover:opacity-75"
+                    className="object-cover transition-opacity duration-500 group-hover:opacity-80"
                     sizes={`${w}vw`}
                   />
                 </div>
-                <div style={{ marginTop: "0.5rem" }}>
+                <div className="pointer-events-auto" style={{ marginTop: "0.25rem" }}>
                   <p style={{ color: "var(--muted)", fontSize: "0.9rem", fontFamily: "'Cormorant Garamond', serif", fontWeight: 400, letterSpacing: "0.25em", textTransform: "uppercase" as const }}>
                     {chapter.title}
                   </p>
