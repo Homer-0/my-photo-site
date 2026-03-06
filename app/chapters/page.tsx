@@ -1,31 +1,95 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import chapters from "@/data/chapters.json";
+
+type Chapter = typeof chapters[0];
+
+function getCoverOrientation(chapter: Chapter): "portrait" | "landscape" {
+  const match = chapter.images?.find(img => img.src === chapter.cover);
+  return (match?.orientation as "portrait" | "landscape") ?? "landscape";
+}
+
+const SIDES: Array<"left" | "right"> = ["left", "right", "left"];
+
+// Per-chapter overrides: width (vw) and margin-top (px)
+const OVERRIDES: Array<{ w?: number; mt?: number }> = [
+  { w: 54, mt: 80  },  // Andelsbolig — larger
+  { w: 40, mt: 140 },  // Copenhagen — bigger gap after Andelsbolig
+  { w: 28, mt: 24  },  // Presence
+];
 
 export default function ChaptersPage() {
   return (
-    <main className="relative px-2 sm:px-3 max-w-[1600px] mx-auto">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 py-6">
-          {chapters.map((chapter) => (
-            <Link
-              key={chapter.slug}
-              href={`/chapters/${chapter.slug}`}
-              className="group block"
-            >
-              <h2 className="text-center text-xl font-medium mb-2 text-black dark:text-white">
-                {chapter.title}
-              </h2>
-              <div className="relative w-full aspect-square overflow-hidden shadow-lg">
-                <img
-                  src={chapter.cover}
-                  alt={chapter.title}
-                  className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                />
-              </div>
-            </Link>
-          ))}
-        </div>
-      </main>
+    // px-10 gives ~40px breathing room from both screen edges, matching the reference
+    <main className="pb-64 px-10" style={{ overflow: "clip" }}>
+      {chapters.map((chapter, i) => {
+        const orientation = getCoverOrientation(chapter);
+        const isPortrait = orientation === "portrait";
+        const side = SIDES[i] ?? (i % 2 === 0 ? "left" : "right");
+        const isLeft = side === "left";
+        const override = OVERRIDES[i] ?? {};
+        const w = override.w ?? (isPortrait ? 28 : 40);
+        const aspect = isPortrait ? "2/3" : "3/2";
+        const mt = override.mt ?? 24;
+
+        if (isLeft) {
+          // Left: image at left edge, caption to its right at vertical center
+          return (
+            <div key={chapter.slug} style={{ marginTop: `${mt}px` }}>
+              <Link href={`/chapters/${chapter.slug}`} className="group flex items-center gap-10">
+                <div className="relative flex-shrink-0" style={{ width: `${w}vw`, aspectRatio: aspect }}>
+                  <Image
+                    src={chapter.cover}
+                    alt={chapter.title}
+                    fill
+                    className="object-cover transition-opacity duration-500 group-hover:opacity-75"
+                    sizes={`${w}vw`}
+                  />
+                </div>
+                <div>
+                  <p style={{ color: "var(--muted)", fontSize: "0.9rem", fontFamily: "'Cormorant Garamond', serif", fontWeight: 400, letterSpacing: "0.25em", textTransform: "uppercase" as const }}>
+                    {chapter.title}
+                  </p>
+                  {chapter.subtitle && (
+                    <p style={{ color: "var(--muted)", fontSize: "0.82rem", fontFamily: "'Geist', sans-serif", fontWeight: 300, marginTop: "0.25rem", opacity: 0.6 }}>
+                      {chapter.subtitle}
+                    </p>
+                  )}
+                </div>
+              </Link>
+            </div>
+          );
+        } else {
+          // Right: image + caption stacked vertically, caption below image at its left edge
+          return (
+            <div key={chapter.slug} style={{ marginTop: `${mt}px`, display: "flex", justifyContent: "flex-end" }}>
+              <Link href={`/chapters/${chapter.slug}`} className="group flex flex-col">
+                <div className="relative" style={{ width: `${w}vw`, aspectRatio: aspect }}>
+                  <Image
+                    src={chapter.cover}
+                    alt={chapter.title}
+                    fill
+                    className="object-cover transition-opacity duration-500 group-hover:opacity-75"
+                    sizes={`${w}vw`}
+                  />
+                </div>
+                <div style={{ marginTop: "0.5rem" }}>
+                  <p style={{ color: "var(--muted)", fontSize: "0.9rem", fontFamily: "'Cormorant Garamond', serif", fontWeight: 400, letterSpacing: "0.25em", textTransform: "uppercase" as const }}>
+                    {chapter.title}
+                  </p>
+                  {chapter.subtitle && (
+                    <p style={{ color: "var(--muted)", fontSize: "0.82rem", fontFamily: "'Geist', sans-serif", fontWeight: 300, marginTop: "0.25rem", opacity: 0.6 }}>
+                      {chapter.subtitle}
+                    </p>
+                  )}
+                </div>
+              </Link>
+            </div>
+          );
+        }
+      })}
+    </main>
   );
 }

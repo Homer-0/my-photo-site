@@ -1,10 +1,10 @@
 export default function Journal() {
   return (
-    <div className="relative px-6 pt-10">
-      <h1 className="text-3xl font-bold mb-4">Journal</h1>
-      <p className="text-gray-700 leading-relaxed">
-        Journal entries and reflections will appear here soon.
+    <main className="px-6 sm:px-10 pt-12 pb-20 max-w-[800px]">
+      {/* Empty state */}
+      <p className="italic text-center py-20" style={{ color: "var(--muted)", fontFamily: "'Geist', sans-serif", fontWeight: 300 }}>
+        Nothing here yet. Come back soon.
       </p>
-    </div>
+    </main>
   );
 }

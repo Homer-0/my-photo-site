@@ -1,12 +1,14 @@
 export default function About() {
   return (
-    <div className="relative px-6 pt-10">
-      <h1 className="text-3xl font-bold mb-4">About Me</h1>
-      <p className="text-gray-700 leading-relaxed">
-        I'm Manos — a photographer based in Copenhagen.
-        <br /><br />
-        More to come.
-      </p>
-    </div>
+    <main className="px-6 sm:px-10 pt-12 pb-20 max-w-[680px]">
+      <div className="space-y-5 text-base leading-relaxed" style={{ color: "var(--ink)" }}>
+        <p>
+          I&apos;m Manos — a photographer based in Copenhagen.
+        </p>
+        <p>
+          More to come.
+        </p>
+      </div>
+    </main>
   );
 }
