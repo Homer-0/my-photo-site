@@ -1,15 +1,56 @@
-@import url("https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Geist:wght@300;400&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-body {
-  font-family: 'Satoshi', sans-serif;
-  @apply bg-white text-black dark:bg-black dark:text-white;
+:root {
+  --bg: #F7F4EF;
+  --ink: #1C1916;
+  --muted: #9C9488;
+  --border: #E2DDD6;
 }
 
-.writing-vertical {
-  writing-mode: vertical-rl;
-  text-orientation: upright;
+.dark {
+  --bg: #1A1815;
+  --ink: #EDE9E2;
+  --muted: #6B6560;
+  --border: #2E2B27;
+}
+
+body {
+  font-family: 'Geist', sans-serif;
+  font-weight: 300;
+  background-color: var(--bg);
+  color: var(--ink);
+}
+
+/* Grain texture overlay */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-size: 128px 128px;
+}
+
+.font-display {
+  font-family: 'DM Serif Display', serif;
+}
+
+.label {
+  font-family: 'Geist', sans-serif;
+  font-weight: 300;
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* Hide scrollbar on film strip */
+.overflow-x-auto::-webkit-scrollbar {
+  display: none;
 }
