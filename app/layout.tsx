@@ -1,5 +1,4 @@
 import "./globals.css";
-import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { Providers } from "./providers";
@@ -9,9 +8,7 @@ import { Analytics } from "@vercel/analytics/next";
 export const metadata: Metadata = {
   title: "Manos Tzavidas – Photography",
   description: "Photography portfolio by Manos Tzavidas",
-  icons: {
-    icon: "/favicon.png",
-  },
+  icons: { icon: "/favicon.png" },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -19,54 +16,48 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" suppressHydrationWarning>
       <body>
         <Providers>
-          <header className="sticky top-0 z-50 bg-white dark:bg-black px-4 py-1 sm:px-6 sm:py-6 relative overflow-hidden">
-            <div className="absolute inset-x-0 bottom-0 h-px bg-gray-200 dark:bg-gray-800 z-20" />
-            <div className="sm:hidden">
-              <div className="flex justify-center">
-                <Link href="/" className="relative inline-flex z-10">
-                  <Image
-                    src="/logo.png"
-                    alt="Manos Tzavidas logo"
-                    width={100}
-                    height={50}
-                    className="w-[66px] h-auto -translate-y-[1px] dark:invert"
-                    priority
-                  />
-                </Link>
+          <header
+            className="sticky top-0 z-50 px-6 sm:px-10 py-5"
+            style={{ backgroundColor: "var(--bg)", borderBottom: "1px solid var(--border)" }}
+          >
+            {/* Mobile */}
+            <div className="sm:hidden flex flex-col items-center gap-2">
+              <Link href="/" className="font-display text-xl italic" style={{ color: "var(--ink)" }}>
+                Manos Tzavidas
+              </Link>
+              <div className="flex items-center gap-5">
+                <nav className="flex items-center gap-5">
+                  {["Home", "Chapters", "Journal", "About"].map((label) => (
+                    <Link
+                      key={label}
+                      href={label === "Home" ? "/" : `/${label.toLowerCase()}`}
+                      className="label"
+                    >
+                      {label}
+                    </Link>
+                  ))}
+                </nav>
+                <ThemeSwitcher />
               </div>
-              <nav className="mt-0.5 flex flex-nowrap items-center justify-center gap-3 text-sm font-medium">
-                <Link href="/" className="whitespace-nowrap">Home</Link>
-                <Link href="/chapters" className="whitespace-nowrap">Chapters</Link>
-                <Link href="/journal" className="whitespace-nowrap">Journal</Link>
-                <Link href="/about" className="whitespace-nowrap">About</Link>
-                <ThemeSwitcher orientation="horizontal" />
-              </nav>
             </div>
 
-            <div className="hidden sm:flex relative sm:items-center sm:justify-center sm:gap-0">
-              <div className="sm:w-auto sm:absolute sm:left-10 flex sm:justify-start">
-                <Link href="/" className="relative inline-flex z-10">
-                  <Image
-                    src="/logo.png"
-                    alt="Manos Tzavidas logo"
-                    width={100}
-                    height={50}
-                    className="-translate-y-[1px] dark:invert"
-                    priority
-                  />
-                </Link>
-              </div>
-
-              <nav className="flex flex-wrap justify-center gap-12 text-xl font-medium items-center">
-                <Link href="/">Home</Link>
-                <Link href="/chapters">Chapters</Link>
-                <Link href="/journal">Journal</Link>
-                <Link href="/about">About</Link>
+            {/* Desktop */}
+            <div className="hidden sm:flex items-center justify-between">
+              <Link href="/" className="font-display text-2xl italic" style={{ color: "var(--ink)" }}>
+                Manos Tzavidas
+              </Link>
+              <nav className="flex items-center gap-10">
+                {["Home", "Chapters", "Journal", "About"].map((label) => (
+                  <Link
+                    key={label}
+                    href={label === "Home" ? "/" : `/${label.toLowerCase()}`}
+                    className="label transition-opacity hover:opacity-60"
+                  >
+                    {label}
+                  </Link>
+                ))}
               </nav>
-
-              <div className="sm:w-auto sm:absolute sm:right-6 flex sm:justify-end">
-                <ThemeSwitcher orientation="horizontal" />
-              </div>
+              <ThemeSwitcher />
             </div>
           </header>
           <main>{children}</main>
