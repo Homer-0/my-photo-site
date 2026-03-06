@@ -17,22 +17,28 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <Providers>
           <header
-            className="sticky top-0 z-50 px-6 sm:px-10 py-5"
-            style={{ backgroundColor: "var(--bg)", borderBottom: "1px solid var(--border)" }}
+            className="sticky top-0 z-50 px-10 py-6"
+            style={{ backgroundColor: "var(--bg)" }}
           >
             {/* Mobile */}
-            <div className="sm:hidden flex flex-col items-center gap-2">
-              <Link href="/" className="font-display text-xl italic" style={{ color: "var(--ink)" }}>
+            <div className="sm:hidden flex flex-col items-center gap-3">
+              <Link
+                href="/"
+                style={{
+                  fontFamily: "'Cormorant Garamond', serif",
+                  fontWeight: 400,
+                  fontSize: "0.8rem",
+                  letterSpacing: "0.25em",
+                  textTransform: "uppercase",
+                  color: "var(--ink)",
+                }}
+              >
                 Manos Tzavidas
               </Link>
               <div className="flex items-center gap-5">
                 <nav className="flex items-center gap-5">
                   {["Home", "Chapters", "Journal", "About"].map((label) => (
-                    <Link
-                      key={label}
-                      href={label === "Home" ? "/" : `/${label.toLowerCase()}`}
-                      className="label"
-                    >
+                    <Link key={label} href={label === "Home" ? "/" : `/${label.toLowerCase()}`} className="label">
                       {label}
                     </Link>
                   ))}
@@ -43,7 +49,17 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
             {/* Desktop */}
             <div className="hidden sm:flex items-center justify-between">
-              <Link href="/" className="font-display text-2xl italic" style={{ color: "var(--ink)" }}>
+              <Link
+                href="/"
+                style={{
+                  fontFamily: "'Cormorant Garamond', serif",
+                  fontWeight: 400,
+                  fontSize: "0.85rem",
+                  letterSpacing: "0.25em",
+                  textTransform: "uppercase",
+                  color: "var(--ink)",
+                }}
+              >
                 Manos Tzavidas
               </Link>
               <nav className="flex items-center gap-10">

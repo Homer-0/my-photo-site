@@ -6,7 +6,6 @@ import Lightbox from "yet-another-react-lightbox";
 import Zoom from "yet-another-react-lightbox/plugins/zoom";
 import "yet-another-react-lightbox/styles.css";
 import Image from "next/image";
-import Masonry from "react-masonry-css";
 import chapters from "@/data/chapters.json";
 
 export default function AlbumPage() {
@@ -14,14 +13,18 @@ export default function AlbumPage() {
   const album = chapters.find((a) => a.slug === slug);
   const [index, setIndex] = useState(-1);
 
-  const breakpointCols = { default: 3, 1280: 2, 768: 1 };
-
   if (!album) {
     return (
       <div className="flex items-center justify-center h-64">
         <p className="label">Album not found</p>
       </div>
     );
+  }
+
+  // Group images into pairs for asymmetric two-column rows
+  const pairs: Array<{ left: typeof album.images[number]; right?: typeof album.images[number] }> = [];
+  for (let i = 0; i < album.images.length; i += 2) {
+    pairs.push({ left: album.images[i], right: album.images[i + 1] });
   }
 
   return (
@@ -40,7 +43,7 @@ export default function AlbumPage() {
           style={{ background: "linear-gradient(to top, rgba(28,25,22,0.6) 0%, transparent 60%)" }}
         />
         <div className="absolute bottom-8 left-6 sm:left-10">
-          <h1 className="font-display italic text-4xl sm:text-5xl text-white">
+          <h1 className="font-display text-3xl sm:text-4xl text-white tracking-[0.25em] uppercase">
             {album.title}
           </h1>
           {album.subtitle && (
@@ -51,35 +54,67 @@ export default function AlbumPage() {
         </div>
       </div>
 
-      {/* Photo grid */}
-      <div className="px-2 sm:px-3 pt-3 pb-12">
-        <Masonry
-          breakpointCols={breakpointCols}
-          className="flex gap-2"
-          columnClassName="space-y-2"
-        >
-          {album.images.map((image, i) => (
+      {/* Asymmetric two-column layout */}
+      <div className="mx-auto max-w-[90rem] px-10 sm:px-16 pt-20 pb-32 flex flex-col gap-32">
+        {pairs.map((pair, pairIdx) => {
+          const flip = pairIdx % 2 === 1; // alternate which side is larger
+          const leftIsLarge = !flip;
+          const leftImg = pair.left;
+          const rightImg = pair.right;
+          const leftPortrait = leftImg.orientation === "portrait";
+          const rightPortrait = rightImg?.orientation === "portrait";
+
+          return (
             <div
-              key={image.src}
-              onClick={() => setIndex(i)}
-              className={`relative w-full ${
-                image.orientation === "landscape" ? "aspect-[5/4]" : "aspect-[4/5]"
-              } cursor-zoom-in overflow-hidden`}
+              key={pairIdx}
+              className="flex flex-col sm:flex-row gap-4 sm:gap-40 items-end"
             >
-              <Image
-                src={image.src}
-                alt={`${album.title} photo ${i + 1}`}
-                fill
-                className="object-cover transition-[filter] duration-300 hover:brightness-105"
-                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                priority={i === 0}
-              />
+              {/* Left image */}
+              <div
+                className="relative w-full cursor-zoom-in overflow-hidden"
+                style={{
+                  flex: leftIsLarge ? "5 1 0%" : "4 1 0%",
+                  aspectRatio: leftPortrait ? "2/3" : "3/2",
+                  marginTop: leftIsLarge ? 0 : `${3 + pairIdx * 2}rem`,
+                }}
+                onClick={() => setIndex(pairIdx * 2)}
+              >
+                <Image
+                  src={leftImg.src}
+                  alt={`${album.title} photo ${pairIdx * 2 + 1}`}
+                  fill
+                  className="object-cover transition-[filter] duration-300 hover:brightness-105"
+                  sizes="(max-width: 640px) 100vw, 60vw"
+                  priority={pairIdx === 0}
+                />
+              </div>
+
+              {/* Right image */}
+              {rightImg && (
+                <div
+                  className="relative w-full cursor-zoom-in overflow-hidden"
+                  style={{
+                    flex: leftIsLarge ? "4 1 0%" : "5 1 0%",
+                    aspectRatio: rightPortrait ? "2/3" : "3/2",
+                    marginTop: leftIsLarge ? `${3 + pairIdx * 2}rem` : 0,
+                  }}
+                  onClick={() => setIndex(pairIdx * 2 + 1)}
+                >
+                  <Image
+                    src={rightImg.src}
+                    alt={`${album.title} photo ${pairIdx * 2 + 2}`}
+                    fill
+                    className="object-cover transition-[filter] duration-300 hover:brightness-105"
+                    sizes="(max-width: 640px) 100vw, 40vw"
+                  />
+                </div>
+              )}
             </div>
-          ))}
-        </Masonry>
+          );
+        })}
       </div>
 
-      {/* Lightbox — warm palette */}
+      {/* Lightbox */}
       <Lightbox
         open={index >= 0}
         close={() => setIndex(-1)}
@@ -87,7 +122,7 @@ export default function AlbumPage() {
         slides={album.images.map(({ src }) => ({ src }))}
         plugins={[Zoom]}
         zoom={{ maxZoomPixelRatio: 2 }}
-        styles={{ container: { backgroundColor: "rgba(247,244,239,0.97)" } }}
+        styles={{ container: { backgroundColor: "rgba(244,243,240,0.97)" } }}
       />
     </main>
   );

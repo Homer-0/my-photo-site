@@ -1,64 +1,95 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import Image from "next/image";
 import chapters from "@/data/chapters.json";
 
+type Chapter = typeof chapters[0];
+
+function getCoverOrientation(chapter: Chapter): "portrait" | "landscape" {
+  const match = chapter.images?.find(img => img.src === chapter.cover);
+  return (match?.orientation as "portrait" | "landscape") ?? "landscape";
+}
+
+const SIDES: Array<"left" | "right"> = ["left", "right", "left"];
+
+// Per-chapter overrides: width (vw) and margin-top (px)
+const OVERRIDES: Array<{ w?: number; mt?: number }> = [
+  { w: 54, mt: 80  },  // Andelsbolig — larger
+  { w: 40, mt: 140 },  // Copenhagen — bigger gap after Andelsbolig
+  { w: 28, mt: 24  },  // Presence
+];
+
 export default function ChaptersPage() {
-  const [hovered, setHovered] = useState<string | null>(null);
-
   return (
-    <main className="relative px-6 sm:px-10 pt-10 pb-20 max-w-[1200px] mx-auto">
-      {/* Page title */}
-      <div className="mb-10">
-        <h1 className="font-display italic text-5xl sm:text-6xl" style={{ color: "var(--ink)" }}>
-          Chapters
-        </h1>
-        <div className="mt-4" style={{ borderBottom: "1px solid var(--border)" }} />
-      </div>
+    // px-10 gives ~40px breathing room from both screen edges, matching the reference
+    <main className="pb-64 px-10" style={{ overflow: "clip" }}>
+      {chapters.map((chapter, i) => {
+        const orientation = getCoverOrientation(chapter);
+        const isPortrait = orientation === "portrait";
+        const side = SIDES[i] ?? (i % 2 === 0 ? "left" : "right");
+        const isLeft = side === "left";
+        const override = OVERRIDES[i] ?? {};
+        const w = override.w ?? (isPortrait ? 28 : 40);
+        const aspect = isPortrait ? "2/3" : "3/2";
+        const mt = override.mt ?? 24;
 
-      {/* Ghost cover preview (desktop) */}
-      {hovered && (
-        <div
-          className="fixed inset-0 pointer-events-none z-0 transition-opacity duration-500"
-          style={{ opacity: 0.12 }}
-        >
-          <img
-            src={chapters.find((c) => c.slug === hovered)?.cover}
-            alt=""
-            className="absolute inset-0 w-full h-full object-cover"
-          />
-        </div>
-      )}
-
-      {/* Chapter list */}
-      <ol className="relative z-10">
-        {chapters.map((chapter, i) => (
-          <li key={chapter.slug} style={{ borderBottom: "1px solid var(--border)" }}>
-            <Link
-              href={`/chapters/${chapter.slug}`}
-              className="flex items-baseline gap-6 py-6 group transition-opacity hover:opacity-70"
-              onMouseEnter={() => setHovered(chapter.slug)}
-              onMouseLeave={() => setHovered(null)}
-            >
-              {/* Number */}
-              <span className="label w-6 flex-shrink-0">
-                {String(i + 1).padStart(2, "0")}
-              </span>
-
-              {/* Title */}
-              <span className="font-display italic text-2xl sm:text-3xl flex-1" style={{ color: "var(--ink)" }}>
-                {chapter.title}
-              </span>
-
-              {/* Meta */}
-              <span className="label hidden sm:block">
-                {chapter.images?.length ?? 0} photos
-              </span>
-            </Link>
-          </li>
-        ))}
-      </ol>
+        if (isLeft) {
+          // Left: image at left edge, caption to its right at vertical center
+          return (
+            <div key={chapter.slug} style={{ marginTop: `${mt}px` }}>
+              <Link href={`/chapters/${chapter.slug}`} className="group flex items-center gap-10">
+                <div className="relative flex-shrink-0" style={{ width: `${w}vw`, aspectRatio: aspect }}>
+                  <Image
+                    src={chapter.cover}
+                    alt={chapter.title}
+                    fill
+                    className="object-cover transition-opacity duration-500 group-hover:opacity-75"
+                    sizes={`${w}vw`}
+                  />
+                </div>
+                <div>
+                  <p style={{ color: "var(--muted)", fontSize: "0.9rem", fontFamily: "'Cormorant Garamond', serif", fontWeight: 400, letterSpacing: "0.25em", textTransform: "uppercase" as const }}>
+                    {chapter.title}
+                  </p>
+                  {chapter.subtitle && (
+                    <p style={{ color: "var(--muted)", fontSize: "0.82rem", fontFamily: "'Geist', sans-serif", fontWeight: 300, marginTop: "0.25rem", opacity: 0.6 }}>
+                      {chapter.subtitle}
+                    </p>
+                  )}
+                </div>
+              </Link>
+            </div>
+          );
+        } else {
+          // Right: image + caption stacked vertically, caption below image at its left edge
+          return (
+            <div key={chapter.slug} style={{ marginTop: `${mt}px`, display: "flex", justifyContent: "flex-end" }}>
+              <Link href={`/chapters/${chapter.slug}`} className="group flex flex-col">
+                <div className="relative" style={{ width: `${w}vw`, aspectRatio: aspect }}>
+                  <Image
+                    src={chapter.cover}
+                    alt={chapter.title}
+                    fill
+                    className="object-cover transition-opacity duration-500 group-hover:opacity-75"
+                    sizes={`${w}vw`}
+                  />
+                </div>
+                <div style={{ marginTop: "0.5rem" }}>
+                  <p style={{ color: "var(--muted)", fontSize: "0.9rem", fontFamily: "'Cormorant Garamond', serif", fontWeight: 400, letterSpacing: "0.25em", textTransform: "uppercase" as const }}>
+                    {chapter.title}
+                  </p>
+                  {chapter.subtitle && (
+                    <p style={{ color: "var(--muted)", fontSize: "0.82rem", fontFamily: "'Geist', sans-serif", fontWeight: 300, marginTop: "0.25rem", opacity: 0.6 }}>
+                      {chapter.subtitle}
+                    </p>
+                  )}
+                </div>
+              </Link>
+            </div>
+          );
+        }
+      })}
     </main>
   );
 }
