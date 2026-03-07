@@ -31,16 +31,13 @@ export default function AlbumPage() {
     <main>
       {/* Chapter title header */}
       <div className="flex flex-col items-center justify-center text-center px-6 pt-3 pb-2 sm:pt-4 sm:pb-3">
-        <h1 className="font-accent text-4xl sm:text-5xl" style={{ fontWeight: 400, color: "var(--ink)" }}>
+        <h1 className="font-accent text-4xl sm:text-5xl" style={{ fontWeight: 400, color: "var(--ink)", textTransform: "uppercase", letterSpacing: "0.2em" }}>
           {album.title}
         </h1>
         {album.subtitle && (
-          <>
-            <div className="mt-5 mb-3 w-72 sm:w-96 mx-auto" style={{ borderTop: "1px solid var(--border)" }} />
-            <p className="font-accent text-base sm:text-lg italic" style={{ fontWeight: 300, color: "var(--muted)" }}>
-              {album.subtitle}
-            </p>
-          </>
+          <p className="font-accent text-base sm:text-lg italic mt-1" style={{ fontWeight: 300, color: "var(--muted)" }}>
+            {album.subtitle}
+          </p>
         )}
       </div>
 

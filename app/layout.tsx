@@ -28,7 +28,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 style={{
                   fontFamily: "'Geist', sans-serif",
                   fontWeight: 300,
-                  fontSize: "0.8rem",
+                  fontSize: "1.3rem",
                   letterSpacing: "0.25em",
                   textTransform: "uppercase",
                   color: "var(--ink)",
@@ -51,7 +51,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 style={{
                   fontFamily: "'Geist', sans-serif",
                   fontWeight: 300,
-                  fontSize: "0.85rem",
+                  fontSize: "1.3rem",
                   letterSpacing: "0.25em",
                   textTransform: "uppercase",
                   color: "var(--ink)",
