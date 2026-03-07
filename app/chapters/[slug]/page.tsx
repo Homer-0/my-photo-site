@@ -29,33 +29,23 @@ export default function AlbumPage() {
 
   return (
     <main>
-      {/* Full-bleed cover */}
-      <div className="relative w-full" style={{ height: "70dvh" }}>
-        <Image
-          src={album.cover}
-          alt={album.title}
-          fill
-          className="object-cover"
-          priority
-        />
-        <div
-          className="absolute inset-0"
-          style={{ background: "linear-gradient(to top, rgba(28,25,22,0.6) 0%, transparent 60%)" }}
-        />
-        <div className="absolute bottom-8 left-6 sm:left-10">
-          <h1 className="font-display text-3xl sm:text-4xl text-white tracking-[0.25em] uppercase">
-            {album.title}
-          </h1>
-          {album.subtitle && (
-            <p className="mt-1 text-white/70 text-sm font-light tracking-widest uppercase">
+      {/* Chapter title header */}
+      <div className="flex flex-col items-center justify-center text-center px-6 pt-6 pb-4 sm:pt-8 sm:pb-6">
+        <h1 className="font-display text-4xl sm:text-5xl" style={{ fontWeight: 400, color: "var(--ink)" }}>
+          {album.title}
+        </h1>
+        {album.subtitle && (
+          <>
+            <div className="mt-5 mb-3 w-72 sm:w-96 mx-auto" style={{ borderTop: "1px solid var(--border)" }} />
+            <p className="font-display text-base sm:text-lg italic" style={{ fontWeight: 300, color: "var(--muted)" }}>
               {album.subtitle}
             </p>
-          )}
-        </div>
+          </>
+        )}
       </div>
 
       {/* Asymmetric two-column layout */}
-      <div className="mx-auto max-w-[90rem] px-10 sm:px-16 pt-20 pb-32 flex flex-col gap-32">
+      <div className="mx-auto max-w-[90rem] px-10 sm:px-16 pt-4 pb-32 flex flex-col gap-32">
         {pairs.map((pair, pairIdx) => {
           const flip = pairIdx % 2 === 1; // alternate which side is larger
           const leftIsLarge = !flip;
