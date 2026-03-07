@@ -26,8 +26,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <Link
                 href="/"
                 style={{
-                  fontFamily: "'Cormorant Garamond', serif",
-                  fontWeight: 400,
+                  fontFamily: "'Geist', sans-serif",
+                  fontWeight: 300,
                   fontSize: "0.8rem",
                   letterSpacing: "0.25em",
                   textTransform: "uppercase",
@@ -49,8 +49,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <Link
                 href="/"
                 style={{
-                  fontFamily: "'Cormorant Garamond', serif",
-                  fontWeight: 400,
+                  fontFamily: "'Geist', sans-serif",
+                  fontWeight: 300,
                   fontSize: "0.85rem",
                   letterSpacing: "0.25em",
                   textTransform: "uppercase",

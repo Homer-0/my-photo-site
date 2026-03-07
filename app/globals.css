@@ -38,6 +38,10 @@ body::before {
 }
 
 .font-display {
+  font-family: 'Geist', sans-serif;
+}
+
+.font-accent {
   font-family: 'Cormorant Garamond', serif;
 }
 

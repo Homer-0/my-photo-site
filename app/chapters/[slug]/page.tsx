@@ -30,14 +30,14 @@ export default function AlbumPage() {
   return (
     <main>
       {/* Chapter title header */}
-      <div className="flex flex-col items-center justify-center text-center px-6 pt-6 pb-4 sm:pt-8 sm:pb-6">
-        <h1 className="font-display text-4xl sm:text-5xl" style={{ fontWeight: 400, color: "var(--ink)" }}>
+      <div className="flex flex-col items-center justify-center text-center px-6 pt-3 pb-2 sm:pt-4 sm:pb-3">
+        <h1 className="font-accent text-4xl sm:text-5xl" style={{ fontWeight: 400, color: "var(--ink)" }}>
           {album.title}
         </h1>
         {album.subtitle && (
           <>
             <div className="mt-5 mb-3 w-72 sm:w-96 mx-auto" style={{ borderTop: "1px solid var(--border)" }} />
-            <p className="font-display text-base sm:text-lg italic" style={{ fontWeight: 300, color: "var(--muted)" }}>
+            <p className="font-accent text-base sm:text-lg italic" style={{ fontWeight: 300, color: "var(--muted)" }}>
               {album.subtitle}
             </p>
           </>
@@ -45,7 +45,7 @@ export default function AlbumPage() {
       </div>
 
       {/* Asymmetric two-column layout */}
-      <div className="mx-auto max-w-[90rem] px-10 sm:px-16 pt-4 pb-32 flex flex-col gap-32">
+      <div className="mx-auto max-w-[90rem] px-10 sm:px-16 pt-2 pb-32 flex flex-col gap-32">
         {pairs.map((pair, pairIdx) => {
           const flip = pairIdx % 2 === 1; // alternate which side is larger
           const leftIsLarge = !flip;
