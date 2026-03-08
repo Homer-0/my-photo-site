@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-const LINKS = ["Home", "Chapters", "Journal", "About"] as const;
+const LINKS = ["Chapters", "Journal", "About"] as const;
 
 export default function NavLinks({ className }: { className?: string }) {
   const pathname = usePathname();
@@ -11,11 +11,8 @@ export default function NavLinks({ className }: { className?: string }) {
   return (
     <>
       {LINKS.map((label) => {
-        const href = label === "Home" ? "/" : `/${label.toLowerCase()}`;
-        const isActive =
-          label === "Home"
-            ? pathname === "/"
-            : pathname.startsWith(`/${label.toLowerCase()}`);
+        const href = `/${label.toLowerCase()}`;
+        const isActive = pathname.startsWith(`/${label.toLowerCase()}`);
 
         return (
           <Link

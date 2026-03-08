@@ -26,15 +26,17 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <Link
                 href="/"
                 style={{
-                  fontFamily: "'Geist', sans-serif",
-                  fontWeight: 300,
-                  fontSize: "1.3rem",
-                  letterSpacing: "0.25em",
+                  fontFamily: "'Courier New', monospace",
                   textTransform: "uppercase",
                   color: "var(--ink)",
+                  display: "flex",
+                  alignItems: "center",
+                  lineHeight: 1,
                 }}
               >
-                Manos Tzavidas
+                <span style={{ fontSize: "13px", fontWeight: 300, letterSpacing: "0.08em" }}>M</span>
+                <span style={{ fontSize: "28px", fontWeight: 200, opacity: 0.45, lineHeight: 1, position: "relative", top: "1px", margin: "0 1px" }}>/</span>
+                <span style={{ fontSize: "13px", fontWeight: 300, letterSpacing: "0.08em" }}>T</span>
               </Link>
               <div className="flex items-center gap-5">
                 <nav className="flex items-center gap-5">
@@ -46,22 +48,28 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
             {/* Desktop */}
             <div className="hidden sm:flex items-center justify-between">
-              <Link
-                href="/"
-                style={{
-                  fontFamily: "'Geist', sans-serif",
-                  fontWeight: 300,
-                  fontSize: "1.3rem",
-                  letterSpacing: "0.25em",
-                  textTransform: "uppercase",
-                  color: "var(--ink)",
-                }}
-              >
-                Manos Tzavidas
-              </Link>
-              <nav className="flex items-center gap-10">
-                <NavLinks />
-              </nav>
+              <div className="flex items-center gap-8">
+                <Link
+                  href="/"
+                  style={{
+                    fontFamily: "'Courier New', monospace",
+                    textTransform: "uppercase",
+                    color: "var(--ink)",
+                    display: "flex",
+                    alignItems: "center",
+                    lineHeight: 1,
+                    transform: "scale(1.4)",
+                    transformOrigin: "left center",
+                  }}
+                >
+                  <span style={{ fontSize: "26px", fontWeight: 300, letterSpacing: "0.08em" }}>M</span>
+                  <span style={{ fontSize: "52px", fontWeight: 100, opacity: 0.35, lineHeight: 1, position: "relative", top: "1px", margin: "0 -3px", display: "inline-block", transform: "scaleX(0.4)" }}>/</span>
+                  <span style={{ fontSize: "26px", fontWeight: 300, letterSpacing: "0.08em" }}>T</span>
+                </Link>
+                <nav className="flex items-center gap-8" style={{ marginLeft: "28px" }}>
+                  <NavLinks />
+                </nav>
+              </div>
               <ThemeSwitcher />
             </div>
           </header>
