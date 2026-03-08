@@ -50,12 +50,12 @@ export default function ChaptersPage() {
                     sizes={`${w}vw`}
                   />
                 </div>
-                <div className="pointer-events-auto" style={{ display: "flex", alignItems: "stretch", gap: "0.44em" }}>
-                  <span style={{ fontFamily: "'Geist', sans-serif", fontSize: "1.2em", fontWeight: 100, color: "var(--muted)", lineHeight: 1.35, alignSelf: "flex-start" }}>{NUMBERS[i]}</span>
-                  <div style={{ borderLeft: "1px solid var(--muted)", paddingLeft: "0.44em", display: "flex", flexDirection: "column" }}>
-                    <p style={{ color: "var(--muted)", fontSize: "0.9rem", fontFamily: "'Cormorant Garamond', serif", fontWeight: 400, letterSpacing: "0.25em", textTransform: "uppercase" as const }}>{chapter.title}</p>
+                <div className="pointer-events-auto" style={{ display: "flex", alignItems: "stretch", gap: "0.44em", opacity: 0.55 }}>
+                  <span style={{ fontFamily: "'Geist', sans-serif", fontSize: "1.2em", fontWeight: 100, color: "var(--ink)", lineHeight: 1.35, alignSelf: "flex-start" }}>{NUMBERS[i]}</span>
+                  <div style={{ borderLeft: "1px solid var(--ink)", paddingLeft: "0.44em", display: "flex", flexDirection: "column" }}>
+                    <p style={{ color: "var(--ink)", fontSize: "0.9rem", fontFamily: "'Cormorant Garamond', serif", fontWeight: 400, letterSpacing: "0.25em", textTransform: "uppercase" as const }}>{chapter.title}</p>
                     {chapter.subtitle && (
-                      <p style={{ color: "var(--muted)", fontSize: "0.82rem", fontFamily: "'Geist', sans-serif", fontWeight: 300, marginTop: "0.15rem", opacity: 0.6 }}>
+                      <p style={{ color: "var(--ink)", fontSize: "0.82rem", fontFamily: "'Geist', sans-serif", fontWeight: 300, marginTop: "0.15rem", opacity: 0.6 }}>
                         {chapter.subtitle}
                       </p>
                     )}
@@ -78,12 +78,12 @@ export default function ChaptersPage() {
                     sizes={`${w}vw`}
                   />
                 </div>
-                <div className="pointer-events-auto" style={{ display: "flex", alignItems: "stretch", gap: "0.44em" }}>
-                  <span style={{ fontFamily: "'Geist', sans-serif", fontSize: "1.2em", fontWeight: 100, color: "var(--muted)", lineHeight: 1.35, alignSelf: "flex-start" }}>{NUMBERS[i]}</span>
-                  <div style={{ borderLeft: "1px solid var(--muted)", paddingLeft: "0.44em", display: "flex", flexDirection: "column" }}>
-                    <p style={{ color: "var(--muted)", fontSize: "0.9rem", fontFamily: "'Cormorant Garamond', serif", fontWeight: 400, letterSpacing: "0.25em", textTransform: "uppercase" as const }}>{chapter.title}</p>
+                <div className="pointer-events-auto" style={{ display: "flex", alignItems: "stretch", gap: "0.44em", opacity: 0.55 }}>
+                  <span style={{ fontFamily: "'Geist', sans-serif", fontSize: "1.2em", fontWeight: 100, color: "var(--ink)", lineHeight: 1.35, alignSelf: "flex-start" }}>{NUMBERS[i]}</span>
+                  <div style={{ borderLeft: "1px solid var(--ink)", paddingLeft: "0.44em", display: "flex", flexDirection: "column" }}>
+                    <p style={{ color: "var(--ink)", fontSize: "0.9rem", fontFamily: "'Cormorant Garamond', serif", fontWeight: 400, letterSpacing: "0.25em", textTransform: "uppercase" as const }}>{chapter.title}</p>
                     {chapter.subtitle && (
-                      <p style={{ color: "var(--muted)", fontSize: "0.82rem", fontFamily: "'Geist', sans-serif", fontWeight: 300, marginTop: "0.15rem", opacity: 0.6 }}>
+                      <p style={{ color: "var(--ink)", fontSize: "0.82rem", fontFamily: "'Geist', sans-serif", fontWeight: 300, marginTop: "0.15rem", opacity: 0.6 }}>
                         {chapter.subtitle}
                       </p>
                     )}
@@ -106,12 +106,12 @@ export default function ChaptersPage() {
                     sizes={`${w}vw`}
                   />
                 </div>
-                <div className="pointer-events-auto" style={{ marginTop: "0.25rem", display: "flex", alignItems: "stretch", gap: "0.44em" }}>
-                  <span style={{ fontFamily: "'Geist', sans-serif", fontSize: "1.2em", fontWeight: 100, color: "var(--muted)", lineHeight: 1.35, alignSelf: "flex-start" }}>{NUMBERS[i]}</span>
-                  <div style={{ borderLeft: "1px solid var(--muted)", paddingLeft: "0.44em", display: "flex", flexDirection: "column" }}>
-                    <p style={{ color: "var(--muted)", fontSize: "0.9rem", fontFamily: "'Cormorant Garamond', serif", fontWeight: 400, letterSpacing: "0.25em", textTransform: "uppercase" as const }}>{chapter.title}</p>
+                <div className="pointer-events-auto" style={{ marginTop: "0.25rem", display: "flex", alignItems: "stretch", gap: "0.44em", opacity: 0.55 }}>
+                  <span style={{ fontFamily: "'Geist', sans-serif", fontSize: "1.2em", fontWeight: 100, color: "var(--ink)", lineHeight: 1.35, alignSelf: "flex-start" }}>{NUMBERS[i]}</span>
+                  <div style={{ borderLeft: "1px solid var(--ink)", paddingLeft: "0.44em", display: "flex", flexDirection: "column" }}>
+                    <p style={{ color: "var(--ink)", fontSize: "0.9rem", fontFamily: "'Cormorant Garamond', serif", fontWeight: 400, letterSpacing: "0.25em", textTransform: "uppercase" as const }}>{chapter.title}</p>
                     {chapter.subtitle && (
-                      <p style={{ color: "var(--muted)", fontSize: "0.82rem", fontFamily: "'Geist', sans-serif", fontWeight: 300, marginTop: "0.15rem", opacity: 0.6 }}>
+                      <p style={{ color: "var(--ink)", fontSize: "0.82rem", fontFamily: "'Geist', sans-serif", fontWeight: 300, marginTop: "0.15rem", opacity: 0.6 }}>
                         {chapter.subtitle}
                       </p>
                     )}

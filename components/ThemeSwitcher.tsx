@@ -17,8 +17,8 @@ export default function ThemeSwitcher() {
     <button
       onClick={() => setTheme(isDark ? "light" : "dark")}
       aria-label="Toggle theme"
-      style={{ borderColor: "var(--border)", color: "var(--muted)" }}
-      className="w-8 h-8 rounded-full border flex items-center justify-center transition-colors hover:opacity-60"
+      style={{ borderColor: "var(--ink)", color: "var(--ink)", opacity: 0.35 }}
+      className="w-8 h-8 rounded-full border flex items-center justify-center transition-opacity hover:opacity-40"
     >
       {isDark ? <Sun size={13} strokeWidth={1.5} /> : <Moon size={13} strokeWidth={1.5} />}
     </button>
