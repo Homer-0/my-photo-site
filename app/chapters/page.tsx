@@ -23,7 +23,7 @@ const OVERRIDES = [
 function Caption({ number, chapter }: { number: string; chapter: Chapter }) {
   return (
     <div className="pointer-events-auto" style={{ display: "flex", alignItems: "flex-start", gap: "0.44em", opacity: 0.55 }}>
-      <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "1.4rem", fontWeight: 300, color: "var(--ink)", lineHeight: 1, position: "relative", top: "-0.12em" }}>{number}</span>
+      <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "1.4rem", fontWeight: 300, color: "var(--ink)", lineHeight: 1, position: "relative", top: "-0.16em" }}>{number}</span>
       <div style={{ borderLeft: "1px solid var(--ink)", paddingLeft: "0.44em", display: "flex", flexDirection: "column", alignSelf: "stretch" }}>
         <p style={{ color: "var(--ink)", fontSize: "0.9rem", fontFamily: "'Cormorant Garamond', serif", fontWeight: 400, letterSpacing: "0.25em", textTransform: "uppercase" as const }}>{chapter.title}</p>
         {chapter.subtitle && (
