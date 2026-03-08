@@ -12,7 +12,7 @@ const FEATURED_INDICES = [0, 2, 6, 4, 7, 8, 11, 9];
 const featured = FEATURED_INDICES.map((i) => photos[i]).filter(Boolean);
 
 // Parallax strength — how much the background pans per scroll unit (0 = none)
-const PARALLAX_STRENGTH = 120; // percentage points of background-position shift at full offset
+const PARALLAX_STRENGTH = typeof window !== "undefined" && window.innerWidth < 640 ? 40 : 120;
 
 export default function Home() {
   const stripRef = useRef<HTMLDivElement>(null);
