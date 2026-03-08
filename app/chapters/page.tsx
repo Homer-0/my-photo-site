@@ -14,11 +14,10 @@ function getCoverOrientation(chapter: Chapter): "portrait" | "landscape" {
 const SIDES: Array<"left" | "right"> = ["left", "right", "left"];
 const NUMBERS = ["01", "02", "03"];
 
-// Desktop margin-top and image width overrides per chapter
 const OVERRIDES = [
-  { w: 54, mt: "mt-12 sm:mt-[80px]"  },
-  { w: 40, mt: "mt-12 sm:mt-[140px]" },
-  { w: 28, mt: "mt-6  sm:mt-[24px]"  },
+  { wClass: "w-[80vw] sm:w-[54vw]", mt: "mt-12 sm:mt-[80px]"  },
+  { wClass: "w-[80vw] sm:w-[40vw]", mt: "mt-12 sm:mt-[140px]" },
+  { wClass: "w-[80vw] sm:w-[28vw]", mt: "mt-6  sm:mt-[24px]"  },
 ];
 
 function Caption({ number, chapter }: { number: string; chapter: Chapter }) {
@@ -39,23 +38,22 @@ function Caption({ number, chapter }: { number: string; chapter: Chapter }) {
 
 export default function ChaptersPage() {
   return (
-    <main className="pb-64 px-6 sm:px-10" style={{ overflow: "clip" }}>
+    <main className="pb-64 px-6 sm:px-10 overflow-x-hidden">
       {chapters.map((chapter, i) => {
         const orientation = getCoverOrientation(chapter);
         const isPortrait = orientation === "portrait";
         const side = SIDES[i] ?? (i % 2 === 0 ? "left" : "right");
         const isLeft = side === "left";
-        const override = OVERRIDES[i] ?? { w: isPortrait ? 28 : 40, mt: "mt-12" };
-        const w = override.w;
+        const override = OVERRIDES[i] ?? { wClass: "w-[80vw] sm:w-[40vw]", mt: "mt-12" };
         const aspect = isPortrait ? "2/3" : "3/2";
-        const imageStyle = { width: `min(80vw, ${w}vw)`, aspectRatio: aspect };
+        const wNum = parseInt(override.wClass.match(/sm:w-\[(\d+)vw\]/)?.[1] ?? "40");
 
         if (i === 0) {
           return (
             <div key={chapter.slug} className={override.mt}>
               <Link href={`/chapters/${chapter.slug}`} className="group flex flex-col sm:flex-row sm:items-start sm:gap-2 w-fit pointer-events-none">
-                <div className="relative flex-shrink-0 pointer-events-auto" style={imageStyle}>
-                  <Image src={chapter.cover} alt={chapter.title} fill className="object-cover transition-opacity duration-500 group-hover:opacity-80" sizes={`(max-width: 640px) 80vw, ${w}vw`} />
+                <div className={`relative flex-shrink-0 pointer-events-auto ${override.wClass}`} style={{ aspectRatio: aspect }}>
+                  <Image src={chapter.cover} alt={chapter.title} fill className="object-cover transition-opacity duration-500 group-hover:opacity-80" sizes={`(max-width: 640px) 80vw, ${wNum}vw`} />
                 </div>
                 <div className="mt-2 sm:mt-0 pointer-events-auto">
                   <Caption number={NUMBERS[i]} chapter={chapter} />
@@ -67,8 +65,8 @@ export default function ChaptersPage() {
           return (
             <div key={chapter.slug} className={override.mt}>
               <Link href={`/chapters/${chapter.slug}`} className="group flex flex-col sm:flex-row sm:items-center sm:gap-2 w-fit pointer-events-none">
-                <div className="relative flex-shrink-0 pointer-events-auto" style={imageStyle}>
-                  <Image src={chapter.cover} alt={chapter.title} fill className="object-cover transition-opacity duration-500 group-hover:opacity-80" sizes={`(max-width: 640px) 80vw, ${w}vw`} />
+                <div className={`relative flex-shrink-0 pointer-events-auto ${override.wClass}`} style={{ aspectRatio: aspect }}>
+                  <Image src={chapter.cover} alt={chapter.title} fill className="object-cover transition-opacity duration-500 group-hover:opacity-80" sizes={`(max-width: 640px) 80vw, ${wNum}vw`} />
                 </div>
                 <div className="mt-2 sm:mt-0 pointer-events-auto">
                   <Caption number={NUMBERS[i]} chapter={chapter} />
@@ -80,8 +78,8 @@ export default function ChaptersPage() {
           return (
             <div key={chapter.slug} className={`${override.mt} flex sm:justify-end`}>
               <Link href={`/chapters/${chapter.slug}`} className="group flex flex-col w-fit pointer-events-none">
-                <div className="relative pointer-events-auto" style={imageStyle}>
-                  <Image src={chapter.cover} alt={chapter.title} fill className="object-cover transition-opacity duration-500 group-hover:opacity-80" sizes={`(max-width: 640px) 80vw, ${w}vw`} />
+                <div className={`relative pointer-events-auto ${override.wClass}`} style={{ aspectRatio: aspect }}>
+                  <Image src={chapter.cover} alt={chapter.title} fill className="object-cover transition-opacity duration-500 group-hover:opacity-80" sizes={`(max-width: 640px) 80vw, ${wNum}vw`} />
                 </div>
                 <div className="mt-2 pointer-events-auto">
                   <Caption number={NUMBERS[i]} chapter={chapter} />
