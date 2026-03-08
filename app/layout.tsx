@@ -18,7 +18,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <Providers>
           <header
-            className="sticky top-0 z-50 px-10 py-3"
+            className="top-0 z-50 px-10 py-3 sm:sticky"
             style={{ backgroundColor: "var(--bg)" }}
           >
             {/* Mobile */}
