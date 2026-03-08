@@ -42,7 +42,7 @@ export default function AlbumPage() {
       </div>
 
       {/* Asymmetric two-column layout */}
-      <div className="mx-auto max-w-[90rem] px-10 sm:px-16 pt-2 pb-32 flex flex-col gap-32">
+      <div className="mx-auto max-w-[90rem] px-4 sm:px-16 pt-2 pb-32 flex flex-col gap-8 sm:gap-32">
         {pairs.map((pair, pairIdx) => {
           const flip = pairIdx % 2 === 1; // alternate which side is larger
           const leftIsLarge = !flip;
@@ -54,15 +54,15 @@ export default function AlbumPage() {
           return (
             <div
               key={pairIdx}
-              className="flex flex-col sm:flex-row gap-4 sm:gap-40 items-end"
+              className="flex flex-row gap-2 sm:gap-40 items-end"
             >
               {/* Left image */}
               <div
-                className="relative w-full cursor-zoom-in overflow-hidden"
+                className={`relative w-full cursor-zoom-in overflow-hidden${!leftIsLarge ? " chapter-stagger" : ""}`}
                 style={{
                   flex: leftIsLarge ? "5 1 0%" : "4 1 0%",
                   aspectRatio: leftPortrait ? "2/3" : "3/2",
-                  marginTop: leftIsLarge ? 0 : `${3 + pairIdx * 2}rem`,
+                  ...(!leftIsLarge ? { "--stagger-mt": `${3 + pairIdx * 2}rem` } as React.CSSProperties : {}),
                 }}
                 onClick={() => setIndex(pairIdx * 2)}
               >
@@ -71,7 +71,7 @@ export default function AlbumPage() {
                   alt={`${album.title} photo ${pairIdx * 2 + 1}`}
                   fill
                   className="object-cover transition-[filter] duration-300 hover:brightness-105"
-                  sizes="(max-width: 640px) 100vw, 60vw"
+                  sizes="(max-width: 640px) 50vw, 60vw"
                   priority={pairIdx === 0}
                 />
               </div>
@@ -79,11 +79,11 @@ export default function AlbumPage() {
               {/* Right image */}
               {rightImg && (
                 <div
-                  className="relative w-full cursor-zoom-in overflow-hidden"
+                  className={`relative w-full cursor-zoom-in overflow-hidden${leftIsLarge ? " chapter-stagger" : ""}`}
                   style={{
                     flex: leftIsLarge ? "4 1 0%" : "5 1 0%",
                     aspectRatio: rightPortrait ? "2/3" : "3/2",
-                    marginTop: leftIsLarge ? `${3 + pairIdx * 2}rem` : 0,
+                    ...(leftIsLarge ? { "--stagger-mt": `${3 + pairIdx * 2}rem` } as React.CSSProperties : {}),
                   }}
                   onClick={() => setIndex(pairIdx * 2 + 1)}
                 >
@@ -92,7 +92,7 @@ export default function AlbumPage() {
                     alt={`${album.title} photo ${pairIdx * 2 + 2}`}
                     fill
                     className="object-cover transition-[filter] duration-300 hover:brightness-105"
-                    sizes="(max-width: 640px) 100vw, 40vw"
+                    sizes="(max-width: 640px) 50vw, 40vw"
                   />
                 </div>
               )}

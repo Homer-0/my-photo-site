@@ -58,6 +58,11 @@ body::before {
   color: var(--muted);
 }
 
+/* Chapter image stagger — only on sm+ */
+@media (min-width: 640px) {
+  .chapter-stagger { margin-top: var(--stagger-mt); }
+}
+
 /* Hide scrollbar on film strip */
 .overflow-x-auto::-webkit-scrollbar {
   display: none;

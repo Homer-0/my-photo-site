@@ -34,12 +34,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                   lineHeight: 1,
                 }}
               >
-                <span style={{ fontSize: "13px", fontWeight: 300, letterSpacing: "0.08em" }}>M</span>
-                <span style={{ fontSize: "28px", fontWeight: 200, opacity: 0.45, lineHeight: 1, position: "relative", top: "1px", margin: "0 1px" }}>/</span>
-                <span style={{ fontSize: "13px", fontWeight: 300, letterSpacing: "0.08em" }}>T</span>
+                <span style={{ fontSize: "14px", fontWeight: 300, letterSpacing: "0.08em" }}>M</span>
+                <span style={{ fontSize: "31px", fontWeight: 200, opacity: 0.45, lineHeight: 1, position: "relative", top: "1px", margin: "0 1px" }}>/</span>
+                <span style={{ fontSize: "14px", fontWeight: 300, letterSpacing: "0.08em" }}>T</span>
               </Link>
-              <div className="flex items-center gap-5">
-                <nav className="flex items-center gap-5">
+              <div className="flex items-center gap-6">
+                <nav className="flex items-center gap-6">
                   <NavLinks />
                 </nav>
                 <ThemeSwitcher />
